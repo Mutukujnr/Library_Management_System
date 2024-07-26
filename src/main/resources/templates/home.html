@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
 
 
 <!-- Mirrored from themes.getappui.com/techzaa/velonic/layouts/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 11:14:42 GMT -->
@@ -13,38 +14,49 @@
 <meta content="Techzaa" name="author" />
 
 <!-- CSS -->
-<link th:href="@{/CSS/adminlte.min.css}"
-	rel="stylesheet" type="text/css" id="app-style">
-<link th:href="@{/CSS/app.min.css}" rel="stylesheet"
+<link th:href="@{/CSS/adminlte.min.css}" rel="stylesheet"
 	type="text/css" id="app-style">
+<link th:href="@{/CSS/app.min.css}" rel="stylesheet" type="text/css"
+	id="app-style">
 <link rel="shortcut icon" th:href="@{/CSS/icons.min.css}"
 	type="text/css" id="app-style">
-	
-	 <!-- Font Awesome -->
-    <link rel="stylesheet"  th:href="@{/plugins/fontawesome-free/css/all.min.css}">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <!-- Select2 -->
-    <link rel="stylesheet" th:href="@{/plugins/select2/css/select2.min.css}">
-    <link rel="stylesheet" th:href="@{/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
-    <!-- Sweet Alerts -->
-    <link rel="stylesheet" th:href="@{/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css}">
-    <!-- Toastr -->
-    <link rel="stylesheet" th:href="@{/plugins/toastr/toastr.min.css}">
-    <!-- Data tables Buttons -->
-    <link rel="stylesheet" th:href="@{/plugins/datatables-buttons/css/buttons.bootstrap4.min.css}">
-    <!-- daterange picker -->
-    <link rel="stylesheet" th:href="@{/plugins/daterangepicker/daterangepicker.css}">
-    <!-- DataTables -->
-    <link rel="stylesheet" th:href="@{/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css}">
-    <link rel="stylesheet" th:href="@{/plugins/datatables-responsive/css/responsive.bootstrap4.min.css}">
-    <!-- Full Calendar -->
-    <link rel="stylesheet" th:href="@{/plugins/fullcalendar/lib/main.min.css}">
-    <script th:src="@{/plugins/fullcalendar/lib/main.min.js}"></script>
 
-    <link th:href="httpsjquery.ui.datepicker.monthyearpicker.css" rel="stylesheet">
-    <script th:src="jquery.ui.datepicker.monthyearpicker.js"></script>
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	rel="stylesheet">
+<!-- Select2 -->
+<link rel="stylesheet" th:href="@{/plugins/select2/css/select2.min.css}">
+<link rel="stylesheet"
+	th:href="@{/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+<!-- Sweet Alerts -->
+<link rel="stylesheet"
+	th:href="@{/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css}">
+<!-- Toastr -->
+<link rel="stylesheet" th:href="@{/plugins/toastr/toastr.min.css}">
+<!-- Data tables Buttons -->
+<link rel="stylesheet"
+	th:href="@{/plugins/datatables-buttons/css/buttons.bootstrap4.min.css}">
+<!-- daterange picker -->
+<link rel="stylesheet"
+	th:href="@{/plugins/daterangepicker/daterangepicker.css}">
+<!-- DataTables -->
+<link rel="stylesheet"
+	th:href="@{/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css}">
+<link rel="stylesheet"
+	th:href="@{/plugins/datatables-responsive/css/responsive.bootstrap4.min.css}">
+<!-- Full Calendar -->
+<link rel="stylesheet"
+	th:href="@{/plugins/fullcalendar/lib/main.min.css}">
+<script th:src="@{/plugins/fullcalendar/lib/main.min.js}"></script>
+
+<link th:href="httpsjquery.ui.datepicker.monthyearpicker.css"
+	rel="stylesheet">
+<script th:src="jquery.ui.datepicker.monthyearpicker.js"></script>
 
 
 
@@ -69,14 +81,15 @@
 				<li class="nav-item dropdown">
 					<div class="dropdown ">
 						<a href="javascript:void(0)" class="chip ml-3 nav-link"
-							data-toggle="dropdown" 
+							data-toggle="dropdown"
 							style="display: flex; align-items: center;"> <span
 							class="account-user-avatar"> <i class="nav-icon"> <img
 									th:src="@{/Images/no-profile.png}"
 									style="width: 40px; height: 40px" alt="" srcset="">
 							</i>
-						</span> <span th:text ="${userdata.fullname}"  style="color: aqua; font-weight: bold; margin-left: 8px;">
-								</span></a>
+						</span> <span th:text="${userdata.fullname}"
+							style="color: aqua; font-weight: bold; margin-left: 8px;">
+						</span></a>
 						<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 							<a class="dropdown-item" href="page-profile.html"> <i
 								class="dropdown-icon fe fe-user"> <img
@@ -134,8 +147,8 @@
 							</i>
 								<p>Manage Books</p>
 						</a></li>
-						<li class="nav-item has-treeview"><a
-							href="../views/manage-students.php" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+						<li class="nav-item has-treeview"><a th:href="@{/books}"
+							class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
 								<i class="nav-icon"> <img
 									th:src="@{/Images/icons8_Read_Online_26px.png}" alt=""
 									srcset="">
@@ -143,7 +156,7 @@
 								<p>Manage Students</p>
 						</a></li>
 						<li class="nav-item has-treeview"><a
-							href="../views/issue-book.php" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+							th:href="@{/students}" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
 								<i class="nav-icon"> <img
 									th:src="@{/Images/icons8_Sell_26px.png}" alt="" srcset="">
 							</i>
@@ -214,60 +227,263 @@
 
 			<!-- Main content -->
 			<section class="content">
-				
 
+				<div class="container-fluid">
+					<!-- Small boxes (Stat box) -->
+					<div class="row">
+						<div class="col-lg-3 col-6">
+							<!-- small box -->
+							<div class="small-box"
+								style="background-color: white; border-bottom: 8px solid dodgerblue; border-top: 2px solid dodgerblue; display: grid; grid-template-columns: 2fr 1fr; align-items: center;">
+								<div class="inner">
+
+									<h1 th:text="${bookCount}" style="color: dodgerblue; font-size: 50px;"></h1>
+
+									<p>
+									<h5 class="text-primary">Books</h5>
+									</p>
+								</div>
+								<div class="icon">
+									<i class="fas"> <img
+										th:src="@{/Images/icons8_Book_Shelf_50px.png}" alt=""
+										srcset="">
+									</i>
+								</div>
+								<!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+							</div>
+						</div>
+						<!-- ./col -->
+						<div class="col-lg-3 col-6">
+							<!-- small box -->
+							<div class="small-box"
+								style="background-color: white; border-bottom: 8px solid aqua; border-top: 2px solid aqua; display: grid; grid-template-columns: 2fr 1fr; align-items: center;">
+								<div class="inner">
+
+									<h1 th:text="${studentCount}" style="color: aqua; font-size: 50px;"></h1>
+
+									<p>
+									<h5 class="text-success">Students</h5>
+									</p>
+								</div>
+								<div class="icon">
+									<i class="fas"> <img
+										th:src="@{/Images/icons8_People_50px.png}" alt="" srcset="">
+									</i>
+								</div>
+								<!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+							</div>
+						</div>
+						<!-- ./col -->
+						<div class="col-lg-3 col-6">
+							<!-- small box -->
+							<div class="small-box"
+								style="background-color: white; border-bottom: 8px solid #ffcd3d; border-top: 2px solid #ffcd3d; display: grid; grid-template-columns: 2fr 1fr; align-items: center;">
+								<div class="inner">
+
+									<h1 style="color: black; font-size: 50px;">10</h1>
+
+									<p>
+									<h5 class="text-warning">Issued Books</h5>
+									</p>
+								</div>
+								<div class="icon">
+									<i class="fas"> <img
+										th:src="@{/Images/icons8_Sell_50px.png}" alt="" srcset="">
+									</i>
+								</div>
+								<!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+							</div>
+						</div>
+						<!-- ./col -->
+						<div class="col-lg-3 col-6">
+							<!-- small box -->
+							<div class="small-box"
+								style="background-color: white; border-bottom: 8px solid red; border-top: 2px solid red; display: grid; grid-template-columns: 2fr 1fr; align-items: center;">
+								<div class="inner">
+									<h1 style="color: red; font-size: 50px;">8</h1>
+
+									<p>
+									<h5 class="text-danger">Defaulter List</h5>
+									</p>
+								</div>
+								<div class="icon">
+									<i class="fas"> <img
+										th:src="@{/Images/icons8_List_of_Thumbnails_50px.png}" alt=""
+										srcset="">
+									</i>
+								</div>
+								<!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+							</div>
+						</div>
+						<!-- ./col -->
+					</div>
+					<!-- /.row -->
+
+					<!-- /.row -->
+					<h5 class="text-primary"
+						style="margin-bottom: -45px; text-align: center">Book Details</h5>
+					<div class="row " style="margin-top: 50px; margin-bottom: 30px">
+						<!-- <h5 style="color:#124491;text-align: center;margin: auto;">Books Details</h5> -->
+						<div class="container-fluid">
+							<div class="card">
+
+								<!-- /.card-header -->
+								<div class="card-body table-responsive p-0">
+
+									<table id="example1"
+										class="table table-hover text-nowrap table-head-fixed table-bordered table-sm">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Book Title</th>
+												<th>Authors</th>
+												<th>ISBN</th>
+												<th>Publisher</th>
+												<th>Publication Date</th>
+												<th>Edition</th>
+												<th>Language</th>
+												<th>Category</th>
+
+											</tr>
+										</thead>
+										<tbody>
+<tr th:each="book: ${books}">
+												<td th:text="${book.title}"></td>
+												<td th:text="${book.authors}"></td>
+												<td th:text="${book.isbn}"></td>
+												<td th:text="${book.publisher}"></td>
+												<td th:text="${book.publication_date}"></td>
+												<td th:text="${book.edition}"></td>
+												<td th:text="${book.language}"></td>
+												<td th:text="${book.category}"></td>
+												<td th:text="${book.quantity}"></td>
+												
+												
+											</tr>
+
+										</tbody>
+									</table>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+					</div>
+					<!-- /.row -->
+
+					<h5 class="text-primary"
+						style="margin-bottom: -45px; text-align: center">Student
+						Details</h5>
+					<div class="row " style="margin-top: 50px;">
+						<!-- <h5 style="color:#124491;text-align: center;margin: auto;">Books Details</h5> -->
+						<div class="container-fluid">
+							<div class="card">
+
+								<!-- /.card-header -->
+								<div class="card-body table-responsive p-0">
+
+									<table id="example2"
+										class="table table-hover text-nowrap table-head-fixed table-bordered table-sm">
+										<thead>
+											<tr>
+												<th>s/no</th>
+												<th>Registration No</th>
+												<th>FullName</th>
+												<th>Email</th>
+												<th>School ID</th>
+												<th>Phone</th>
+												<th>Gender</th>
+												<th>Class</th>
+												<th>Department</th>
+												<th>Course</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											<tr th:each="student: ${allstudents}">
+												<td th:text="${student.fullname}"></td>
+												<td th:text="${student.email}"></td>
+												<td th:text="${student.national_id}"></td>
+												<td th:text="${student.phone}"></td>
+												<td th:text="${student.date_of_birth}"></td>
+												<td th:text="${student.gender}"></td>
+												<td th:text="${student.school_id}"></td>
+												<td th:text="${student.year_of_study}"></td>
+												<td th:text="${student.department}"></td>
+												<td th:text="${student.course}"></td>
+												
+											</tr>
+
+										</tbody>
+									</table>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+					</div>
+
+				</div>
+				<!-- /.container-fluid -->
 
 			</section>
-			
-			</div>
-			
-			
-			
-<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
-<script th:src="@{/js/ajax.js}"></script>
-<!-- Bootstrap 4 -->
 
-<script th:src="@{/js/pages/profile.initcopy.js}
+		</div>
+
+
+
+		<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+		<script th:src="@{/js/ajax.js}"></script>
+		<!-- Bootstrap 4 -->
+
+		<script th:src="@{/js/pages/profile.initcopy.js}
 "></script>
 
-<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
-<!-- AdminLTE App -->
-<script th:src="@{/js/adminlte.min.js}"></script>
-<!-- SweetAlert2 -->
-<script th:src="@{/plugins/sweetalert2/sweetalert2.min.js}"></script>
-<!-- Moment Js -->
-<script th:src="@{/plugins/moment/moment.min.js}"></script>
-<!-- Toastr -->
-<script th:src="@{/plugins/toastr/toastr.min.js}"></script>
-<!-- Select2 -->
-<script th:src="@{/plugins/select2/js/select2.full.min.js}"></script>
-<!-- date-range-picker -->
-<script th:src="@{/plugins/daterangepicker/daterangepicker.js}"></script>
+		<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+		<!-- AdminLTE App -->
+		<script th:src="@{/js/adminlte.min.js}"></script>
+		<!-- SweetAlert2 -->
+		<script th:src="@{/plugins/sweetalert2/sweetalert2.min.js}"></script>
+		<!-- Moment Js -->
+		<script th:src="@{/plugins/moment/moment.min.js}"></script>
+		<!-- Toastr -->
+		<script th:src="@{/plugins/toastr/toastr.min.js}"></script>
+		<!-- Select2 -->
+		<script th:src="@{/plugins/select2/js/select2.full.min.js}"></script>
+		<!-- date-range-picker -->
+		<script th:src="@{/plugins/daterangepicker/daterangepicker.js}"></script>
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js" integrity="sha384-YwCdhNQ2IwiYajqT/nGCj0FiU5SR4oIkzYP3ffzNWtu39GKBddP0M0waDU7Zwco0" crossorigin="anonymous"></script> -->
-<!-- DataTables  & Plugins -->
-<script th:src="@{/plugins/datatables/jquery.dataTables.min.js}"></script>
-<script th:src="@{/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
-<script th:src="@{/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
-<script th:src="@{/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
-<script th:src="@{/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
-<script th:src="@{/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
-<script th:src="@{/plugins/jszip/jszip.min.js}"></script>
-<script th:src="@{/plugins/pdfmake/pdfmake.min.js}"></script>
-<script th:src="@{/plugins/pdfmake/vfs_fonts.js}"></script>
-<script th:src="@{/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
-<script th:src="@{/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
-<!-- ChartJS -->
-<script th:src="@{/plugins/chart.js/Chart.min.js}"></script>
-<!-- Custom JS -->
-<script th:src="@{/js/custom.js}"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js" integrity="sha384-YwCdhNQ2IwiYajqT/nGCj0FiU5SR4oIkzYP3ffzNWtu39GKBddP0M0waDU7Zwco0" crossorigin="anonymous"></script> -->
+		<!-- DataTables  & Plugins -->
+		<script th:src="@{/plugins/datatables/jquery.dataTables.min.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+		<script th:src="@{/plugins/jszip/jszip.min.js}"></script>
+		<script th:src="@{/plugins/pdfmake/pdfmake.min.js}"></script>
+		<script th:src="@{/plugins/pdfmake/vfs_fonts.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+		<!-- ChartJS -->
+		<script th:src="@{/plugins/chart.js/Chart.min.js}"></script>
+		<!-- Custom JS -->
+		<script th:src="@{/js/custom.js}"></script>
 
 
-<!-- Select  -->
-<script th:src="@{/js/bootstrap.wizard.min.js}"></script>
-<script th:src="@{/js/pages/form-wizard.init copy.js}"></script>
+		<!-- Select  -->
+		<script th:src="@{/js/bootstrap.wizard.min.js}"></script>
+		<script th:src="@{/js/pages/form-wizard.init copy.js}"></script>
 
-			
+
 
 		<script>
 			$(function() {
@@ -282,6 +498,19 @@
 				});
 			});
 		</script>
+
+		<!-- Main Footer -->
+		<footer class="main-footer"
+			style="background-color: #fff; margin: auto;">
+			<!-- To the right -->
+			<div class="float-right d-none d-sm-inline">©Library Management
+				System</div>
+			<!-- Default to the left -->
+			<div class="float-left">
+				<strong>Copyright &copy;2024 <a href="#">DigitalVortex</a>.
+				</strong> All rights reserved.
+			</div>
+		</footer>
 
 	</div>
 

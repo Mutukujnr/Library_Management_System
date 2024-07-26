@@ -1,6 +1,7 @@
 package com.amos.lms.controllers;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.amos.lms.dto.UserDTO;
+import com.amos.lms.entities.Books;
+import com.amos.lms.entities.Student;
+import com.amos.lms.service.BookService;
+import com.amos.lms.service.StudentService;
 import com.amos.lms.service.UserService;
 
 @Controller
@@ -21,6 +26,12 @@ public class UserController {
 	private UserDetailsService userDetailsService;
 	
 	@Autowired
+	private StudentService studentService;
+	
+	@Autowired
+	private BookService bookService;
+	
+	@Autowired
 	private UserService userService;
 	
 	@GetMapping("/home")
@@ -28,6 +39,17 @@ public class UserController {
 		
 		UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
 		model.addAttribute("userdata", userDetails);
+		
+		List<Student> allStudents = studentService.allStudents();
+		model.addAttribute("allstudents", allStudents);
+		
+		List<Books> books = bookService.getAllBooks();
+		model.addAttribute("books", books);
+		
+		model.addAttribute("studentCount", studentService.getStudentCount());
+		
+		model.addAttribute("bookCount", bookService.getTotalBooks());
+		
 		return "home";
 	}
 	

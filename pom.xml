@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>com.amos</groupId>
 	<artifactId>Library_Management_System</artifactId>
+	
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Library_Management_System</name>
 	<description>Demo project for Spring Boot user registration</description>
