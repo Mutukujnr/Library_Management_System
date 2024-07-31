@@ -48,7 +48,7 @@ public class BookController {
 	public String saveBook(@ModelAttribute("books") BookDTO bookDTO) {
 
 		bookService.saveBook(bookDTO);
-		return "redirect:/manage-books?success";
+		return "redirect:/books?success";
 	}
 
 	@GetMapping("/editBook/{id}")
@@ -87,7 +87,7 @@ public class BookController {
             // Handle case where book ID is not present or invalid
         	 redirectAttributes.addFlashAttribute("errorMessage", "invalid Book id!");
         }
-        return "redirect:/books";
+        return "redirect:/books?update";
     }
 
 	@GetMapping("/deleteBook/{id}")

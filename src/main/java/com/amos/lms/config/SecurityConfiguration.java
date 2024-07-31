@@ -29,14 +29,14 @@ public class SecurityConfiguration {
 	@Bean
 	 SecurityFilterChain  securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(requests -> requests
-                .requestMatchers("/register").permitAll()
+                .requestMatchers("/register").permitAll()       
                 .requestMatchers("/CSS/**","/Images/**","/js/**","/plugins/**","/fonts/**","/auth/**").permitAll()
-                .requestMatchers("/home","/students","/add-student","/student/{id}","/delete/{id}","/update-student").permitAll()
-                .requestMatchers("/books","/add-book","/editBook/{id}","/deleteBook/{id}","/updateBook").permitAll())
+                .requestMatchers("/home","/students","/add-student","/edit-student/{id}","/delete-student/{id}","/update-student").permitAll()
+                .requestMatchers("/books","/add-book","/editBook/{id}","/deleteBook/{id}","/updateBook","/issueBookForm","/issueBook","/issuedBooks").permitAll())
                 .formLogin(login -> login
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/home", true).permitAll())
+                        .defaultSuccessUrl("/home?success", true).permitAll())
                 .logout(logout -> logout
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)

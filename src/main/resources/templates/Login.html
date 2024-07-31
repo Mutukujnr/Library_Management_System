@@ -20,7 +20,16 @@
 <link rel="stylesheet" th:href="@{/auth/icons.min.css}"
 	type="text/css" >
 
+<style>
+@keyframes fade-in{
+0%{opacity: 1}
+100%{opacity: 0}
+}
 
+.fade-in-element{
+animation: fade-in 5s ease;
+}
+</style>
 
 </head>
 
@@ -50,10 +59,9 @@
 										<p class="text-muted mb-3">Enter your email address and
 											password to access account.</p>
 
-										<div th:if="${param.success}" class="mb-3 bg-success">
-											<p class="text-muted mb-3" style="color: aliceblue">Login
-												successfull
-										</div>
+										<div th:if="${param.success}" id="myDiv" class="bg-success fade-in-element" style="color:white;padding:10px;width:50%;margin:auto">
+					<p>Account registration successful</p>
+				</div>
 
 										<div th:if="${param.error}" class="mb-3 bg-success">
 											<p class="text-muted mb-3" style="color: red">Invalid
@@ -139,7 +147,13 @@
 
 	<!-- App js -->
 	<script src="assets/js/app.min.js"></script>
+<script>
+var myDiv = document.getElementById('myDiv');
 
+setTimeout(function(){
+			myDiv.style.display = 'none';
+		},4000);
+</script>
 </body>
 
 

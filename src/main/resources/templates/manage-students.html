@@ -58,20 +58,29 @@
 <link th:href="httpsjquery.ui.datepicker.monthyearpicker.css"
 	rel="stylesheet">
 <script th:src="jquery.ui.datepicker.monthyearpicker.js"></script>
+<style>
+@keyframes fade-in{
+0%{opacity: 1}
+100%{opacity: 0}
+}
 
+.fade-in-element{
+animation: fade-in 5s ease;
+}
+</style>
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 		<nav
-			class="main-header navbar navbar-expand navbar-white navbar-light"
-			style="height: 60px;">
+			class="main-header navbar navbar-expand"
+			style="height: 60px;background-color: #124491;">
 			<!-- Left navbar links -->
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
-					href="#"><i class="fas fa-bars"></i></a></li>
+					href="#"><i class="fas fa-bars" style="color:aliceblue"></i></a></li>
 				<li class="nav-item d-none d-sm-inline-block"><a
-					th:href="@{/home}" class="nav-link">Home</a></li>
+					href="../views/index.php" class="nav-link" style="color:aliceblue">Home</a></li>
 			</ul>
 
 			<!-- Right navbar links -->
@@ -84,10 +93,10 @@
 							style="display: flex; align-items: center;"> <span
 							class="account-user-avatar"> <i class="nav-icon"> <img
 									th:src="@{/Images/no-profile.png}"
-									style="width: 40px; height: 40px" alt="" srcset="">
+									style="width: 40px; height: 40px;border-radius:50%" alt="" srcset="">
 							</i>
 						</span> <span th:text="${userdata.fullname}"
-							style="color: aqua; font-weight: bold; margin-left: 8px;">
+							style="color: gold; font-weight: bold; margin-left: 8px;">
 						</span></a>
 						<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 							<a class="dropdown-item" href="page-profile.html"> <i
@@ -134,19 +143,19 @@
 						<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 						<li class="nav-item has-treeview menu-open"><a
-							th:href="@{/home}" class="nav-link"> <i class="nav-icon">
-									<img th:src="@{/Images/icons8_Library_26px_1.png}" alt=""
-									srcset="">
+							href="../views/index.php" class="nav-link"> <i
+								class="nav-icon"> <img
+									th:src="@{/Images/icons8_Library_26px_1.png}" alt="" srcset="">
 							</i>
 								<p>Dashboard</p>
 						</a></li>
-						<li class="nav-item"><a href="../views/manage-books.php"
+						<li class="nav-item"><a th:href="@{/books}"
 							class="nav-link"> <i class="nav-icon"> <img
 									th:src="@{/Images/icons8_Book_26px.png}" alt="" srcset="">
 							</i>
 								<p>Manage Books</p>
 						</a></li>
-						<li class="nav-item has-treeview"><a th:href="@{/books}"
+						<li class="nav-item has-treeview"><a th:href="@{/students}"
 							class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
 								<i class="nav-icon"> <img
 									th:src="@{/Images/icons8_Read_Online_26px.png}" alt=""
@@ -154,7 +163,7 @@
 							</i>
 								<p>Manage Students</p>
 						</a></li>
-						<li class="nav-item has-treeview"><a th:href="@{/students}"
+						<li class="nav-item has-treeview"><a th:href="@{/issueBookForm}"
 							class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
 								<i class="nav-icon"> <img
 									th:src="@{/Images/icons8_Sell_26px.png}" alt="" srcset="">
@@ -229,10 +238,18 @@
 				<div class="container-fluid">
 					<!-- Small boxes (Stat box) -->
 
+<div th:if="${param.success}" id="myDiv" class="bg-success fade-in-element" style="color:white;padding:10px;width:50%;margin:auto">
+					<p>Student added successfully</p>
+				</div>
+
+<div th:if="${param.update}" id="myDiv" class="bg-success fade-in-element" style="color:white;padding:10px;width:50%;margin:auto">
+					<p>Student updated successfully</p>
+				</div>
+
 					<h5 class="text-primary"
 						style="margin-bottom: -45px; text-align: center">Manage
 						Students</h5>
-					<div class="row " style="margin-top: 50px;">
+					<div class="row " style="margin-top: 50px;border-top:4px solid aqua">
 						<!-- <h5 style="color:#124491;text-align: center;margin: auto;">Books Details</h5> -->
 						<div class="container-fluid">
 							<div class="card">
@@ -560,7 +577,7 @@
 
 
 
-										<thead>
+										<thead class="table-light">
 
 											<th>s/no</th>
 											<th>Registration No</th>
@@ -589,15 +606,31 @@
 												<td th:text="${student.year_of_study}"></td>
 												<td th:text="${student.department}"></td>
 												<td th:text="${student.course}"></td>
-												<td><button type='button' class="btn btn-warning" >
-														Edit</button></td>
-												<td><button type='button' class='btn btn-danger '>
-														Delete</button></td>
+												<td><a th:href="@{/edit-student/{id} (id = ${student.id})}" class="btn btn-warning" >
+														Edit</a></td>
+												<td><a  th:href="@{/delete-student/{id} (id = ${student.id})}"  class='btn btn-danger '>
+														Delete</a></td>
 											</tr>
 
 										</tbody>
 									</table>
-
+<!-- <div class="modal fade" id="delete-student" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form  method="post" th:action="@{/update-student}"
+									role="form" th:object="${student}">
+                <div class="modal-body text-center text-dark">
+                    <img src="../public/img/small-logo.png" height="80px"><br>
+                   
+                    <h4>Are you sure you want to delete the record?</h4>
+                    <input type="hidden" name="delete_book_id" id="delete-id">
+                    <button type="button" class="text-center btn btn-success" data-dismiss="modal">Cancel</button>
+                    <a th:href="@{/delete-student/{id} (id = ${student.id})}" class="text-center btn btn-danger">Delete</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
 									<ul class="pagination">
 										<li class="page-item" th:if="${studentPage.hasPrevious()}">
 											<a class="page-link"
@@ -707,92 +740,15 @@
 		<script th:src="@{/js/bootstrap.wizard.min.js}"></script>
 		<script th:src="@{/js/pages/form-wizard.init copy.js}"></script>
 
-		<script>
-			$(document)
-					.ready(
-							function() {
-								// Handle edit button click
-								$('.sedit-btn')
-										.on(
-												'click',
-												function() {
-													var studentId = $(this)
-															.data('id');
 
-													// AJAX request to fetch student details
-													$
-															.ajax({
-																url : '../helpers/get-student-details.php',
-																type : 'GET',
-																data : {
-																	student_id : studentId
-																},
-																dataType : 'json',
-																success : function(
-																		data) {
-																	// Populate the modal fields with data
-																	$(
-																			'#edit-id')
-																			.val(
-																					data.student_id);
-																	$(
-																			'#edit-regno')
-																			.val(
-																					data.student_regno);
-																	$(
-																			'#edit-fullname')
-																			.val(
-																					data.student_fullname);
-																	$(
-																			'#edit-email')
-																			.val(
-																					data.student_email);
-																	$(
-																			'#edit-national-id')
-																			.val(
-																					data.student_national_id);
-																	$(
-																			'#edit-phone')
-																			.val(
-																					data.student_phone);
-																	$(
-																			'#edit-date-of-birth')
-																			.val(
-																					data.student_date_of_birth);
-																	$(
-																			'#edit-gender')
-																			.val(
-																					data.student_gender);
-																	$(
-																			'#edit-school-id')
-																			.val(
-																					data.student_school_id);
-																	$(
-																			'#edit-class')
-																			.val(
-																					data.student_class);
-																	$(
-																			'#edit-department')
-																			.val(
-																					data.student_department);
-																	$(
-																			'#edit-course')
-																			.val(
-																					data.student_course);
+<script>
+var myDiv = document.getElementById('myDiv');
 
-																	// Show the modal
-																	$(
-																			'#edit-student')
-																			.modal(
-																					'show');
-																}
-															});
-												});
+setTimeout(function(){
+			myDiv.style.display = 'none';
+		},4000);
+</script>
 
-								// Handle form submission for updating the student
-
-							});
-		</script>
 	</div>
 
 

@@ -28,7 +28,7 @@ public class Books {
 	
 	private String publisher;
 	
-	@DateTimeFormat(pattern = "MM-dd-yyyy")
+	
 	private LocalDate publication_date;
 	
 	private String edition;

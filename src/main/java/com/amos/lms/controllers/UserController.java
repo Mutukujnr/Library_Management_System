@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.amos.lms.dto.UserDTO;
 import com.amos.lms.entities.Books;
+import com.amos.lms.entities.IssueBook;
 import com.amos.lms.entities.Student;
 import com.amos.lms.service.BookService;
+import com.amos.lms.service.IssueBookService;
 import com.amos.lms.service.StudentService;
 import com.amos.lms.service.UserService;
 
@@ -32,6 +34,9 @@ public class UserController {
 	private BookService bookService;
 	
 	@Autowired
+	private IssueBookService issueBookService;
+	
+	@Autowired
 	private UserService userService;
 	
 	@GetMapping("/home")
@@ -46,9 +51,14 @@ public class UserController {
 		List<Books> books = bookService.getAllBooks();
 		model.addAttribute("books", books);
 		
+		List<IssueBook> issuedBooks = issueBookService.issuedBooks();
+		model.addAttribute("issuedBooks", issuedBooks);
+		
 		model.addAttribute("studentCount", studentService.getStudentCount());
 		
 		model.addAttribute("bookCount", bookService.getTotalBooks());
+		
+		model.addAttribute("issuedBooksCount", issueBookService.getIssuedBooksCount());
 		
 		return "home";
 	}
@@ -56,21 +66,21 @@ public class UserController {
 	@GetMapping("/login")
 	public String getLoginPage(@ModelAttribute("user") UserDTO userDTO) {
 		
-		return "Login";
+		return "login2";
 	}
 	
 	@GetMapping("/register")
 	public String getRegisterPage(@ModelAttribute("user") UserDTO userDTO) {
 		
 		
-		return "register";
+		return "register2";
 	}
 	
 	@PostMapping("/register")
 	public String registerUser(@ModelAttribute("user") UserDTO userDTO) {
 		
 		userService.save(userDTO);
-		return "redirect:/register?success";
+		return "redirect:/login?success";
 	}
 
 }

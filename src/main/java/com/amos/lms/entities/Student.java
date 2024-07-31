@@ -28,7 +28,7 @@ public class Student {
 	
 	private String phone;
 	
-	 @DateTimeFormat(pattern = "MM-dd-yyyy")
+	// @DateTimeFormat(pattern = "MM-dd-yyyy")
 	private LocalDate date_of_birth;
 	
 	private String gender;

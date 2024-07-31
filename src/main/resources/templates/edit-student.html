@@ -7,7 +7,7 @@
 <!-- Mirrored from themes.getappui.com/techzaa/velonic/layouts/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 11:14:42 GMT -->
 <head>
 <meta charset="utf-8" />
-<title>Edit Book</title>
+<title>Edit Student</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta
 	content="A fully responsive admin theme which can be used to build CRM, CMS,ERP etc."
@@ -231,151 +231,163 @@
 
 
 					<!-- <h5 style="color:#124491;text-align: center;margin: auto;">Books Details</h5> -->
-					<div class="container-fluid"  style="border-top:4px solid aqua">
+					<div class="container-fluid" style="border-top:4px solid aqua">
 						<div class="card">
 
 
 							<h4 class="text-primary" style="text-align: center;">Edit
-								Book</h4>
+								Student</h4>
 							<div class="card-body">
 
-								<form class="form-sample" method="post" th:action="@{/updateBook}"
-									role="form" th:object="${book}">
-									<fieldset style="border: 1px solid aqua; padding: 20px;">
-										<legend>Book Info</legend>
-										<!-- <p class="card-description" style="font-weight: bold;margin-left: 3%;margin-bottom: 10px;"> Personal info </p> -->
-										<div class="row">
-											<input th:field="*{id}" type="hidden" class="form-control" />
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label id="bookTitle" class="col-sm-3 col-form-label"
-														style="font-weight: normal;">Book Title</label>
-													<div class="col-sm-9">
-														<input th:field="*{title}" type="text"
-															class="form-control" id="bookTitle" name="book_title"
-															required placeholder="Book Title" />
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label id="bookAuthors" class="col-sm-3 col-form-label"
-														style="font-weight: normal;">Authors</label>
-													<div class="col-sm-9">
-														<input th:field="*{authors}" type="text"
-															class="form-control" id="bookAuthors" name="book_authors"
-															required placeholder="Book Authors">
+								<form class="form-sample" method="post" th:action="@{/update-student}"
+									role="form" th:object="${student}">
+              <input type="hidden"  th:field="*{id}" id="edit-id" name="student_id">
 
 
-													</div>
-												</div>
-											</div>
+              <fieldset style="border: 1px solid aqua;padding: 20px;">
+                <legend>Personal Info</legend>
+                <!-- <p class="card-description" style="font-weight: bold;margin-left: 3%;margin-bottom: 10px;"> Personal info </p> -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label id="edit-student-regno" class="col-sm-3 col-form-label" style="font-weight: normal;">Reg No.</label>
+                      <div class="col-sm-9">
+                        <input th:field="*{student_regno}" type="text" id="edit-regno" name="student_regno" class="form-control" placeholder="Student Registration number">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label id="edit-student-fullname" class="col-sm-3 col-form-label" style="font-weight: normal;">Student name</label>
+                      <div class="col-sm-9">
+                        <input th:field="*{fullname}" type="text" class="form-control" id="edit-fullname" name="student_fullname" placeholder="fullname...">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label id="edit-student-email" class="col-sm-3 col-form-label" style="font-weight: normal;">Email</label>
+                      <div class="col-sm-9">
+                        <input th:field="*{email}" type="email" class="form-control" id="edit-email" name="student_email" placeholder="email@gmail.com">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label id="edit-student-national-id" class="col-sm-3 col-form-label" style="font-weight: normal;">National ID.</label>
+                      <div class="col-sm-9">
+                        <input th:field="*{national_id}" type="text" id="edit-national-id" name="student_national_id" class="form-control" placeholder="National ID number">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label id="edit-student-phone" class="col-sm-3 col-form-label" style="font-weight: normal;">Phone</label>
+                      <div class="col-sm-9">
+                        <input th:field="*{phone}" type="text" id="edit-phone" name="student_phone" class="form-control" placeholder="07........">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label id="edit-student-date-of-birth" class="col-sm-3 col-form-label" style="font-weight: normal;">Date of Birth</label>
+                      <div class="col-sm-9">
+                        <input th:field="*{date_of_birth}" type="date" id="edit-date-of-birth" name="student_date_of_birth" class="form-control" placeholder="dd/mm/yyyy">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label id="edit-student-gender" class="col-sm-3 col-form-label" style="font-weight: normal;">Gender</label>
+                      <div class="col-sm-9">
+                        <select th:field="*{gender}" class="form-control" name="student_gender" id="edit-gender" placeholder="Gender">
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  
 
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label id="bookISBN" class="col-sm-3 col-form-label"
-														style="font-weight: normal;">ISBN</label>
-													<div class="col-sm-9">
-														<input th:field="*{isbn}" type="text" class="form-control"
-															id="bookISBN" name="book_isbn" required
-															placeholder="Book ISBN">
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label id="bookPublisher" class="col-sm-3 col-form-label"
-														style="font-weight: normal;">Publisher</label>
-													<div class="col-sm-9">
-														<input th:field="*{publisher}" type="text"
-															class="form-control" placeholder="publisher"
-															id="bookPublisher" name="book_publisher" required />
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label id="bookPublicationDate"
-														class="col-sm-3 col-form-label"
-														style="font-weight: normal;">Publication Date</label>
-													<div class="col-sm-9">
-														<input th:field="*{publication_date}" type="date"
-															class="form-control input-lg" id="bookPublicationDate"
-															name="book_publication_date"
-															placeholder="publication date" required>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label id="bookEdition" class="col-sm-3 col-form-label"
-														style="font-weight: normal;">Edition</label>
-													<div class="col-sm-9">
-														<input th:field="*{edition}" type="text"
-															class="form-control" id="bookEdition" name="book_edition"
-															placeholder="book edition" required>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label id="bookLanguage" class="col-sm-3 col-form-label"
-														style="font-weight: normal;">Language</label>
-													<div class="col-sm-9">
-														<input th:field="*{language}" type="text"
-															class="form-control" id="bookLanguage"
-															name="book_language" required
-															placeholder="book language  eg. English, German...">
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label id="bookCategory" class="col-sm-3 col-form-label"
-														style="font-weight: normal;">Category</label>
-													<div class="col-sm-9">
-														<select th:field="*{category}" class="form-control"
-															id="bookCategory" name="book_category" required>
-															<option value="computing">Computing</option>
-															<option value="business">Business</option>
-															<option value="medicine">Medicine</option>
-															<option value="economics">Economics</option>
-														</select>
-													</div>
-												</div>
-											</div>
+                </div>
 
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label id="bookPublicationDate"
-														class="col-sm-3 col-form-label"
-														style="font-weight: normal;">Quantity</label>
-													<div class="col-sm-9">
-														<input th:field="*{quantity}" type="number"
-															class="form-control input-lg" id="bookPublicationDate"
-															name="book_publication_date"
-															placeholder="publication date" required>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6"></div>
-										</div>
-							</div>
-							</fieldset>
-							<div class="modal-footer justify-content-between">
-								<button type="button" class="btn btn-danger"
-									data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-success">Update</button>
-							</div>
-							</form>
+              </fieldset>
+              <fieldset style="border: 1px solid aqua;padding: 20px;">
+                <legend>School Info</legend>
+                <!-- <p class="card-description" style="font-weight: bold;margin-left: 3%;margin-bottom: 10px;"> Personal info </p> -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label id="edit-student-school-id" class="col-sm-3 col-form-label" style="font-weight: normal;">School ID.</label>
+                      <div class="col-sm-9">
+
+                        <input th:field="*{school_id}" type="text" id="edit-school-id" name="student_school_id" class="form-control" placeholder="Student's school id">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label id="edit-student-class" class="col-sm-3 col-form-label" style="font-weight: normal;">Class</label>
+                      <div class="col-sm-9">
+                        <input th:field="*{year_of_study}" type="text" id="edit-class" name="student_class" class="form-control">
+
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label id="edit-student-department" class="col-sm-3 col-form-label" style="font-weight: normal;">Department</label>
+                      <div class="col-sm-9">
+                        <select th:field="*{department}" class="form-control" name="student_department" id="edit-department" placeholder="department">
+                          <option value="computing">ICT</option>
+                          <option value="medicine">Medicine</option>
+                          <option value="agriculture">Agriculture</option>
+                          <option value="sobe">SOBE</option>
+                          <option value="nursing">Nursing</option>
+                          <option value="law">Law</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label id="edit-student-course" class="col-sm-3 col-form-label" style="font-weight: normal;">Course</label>
+                      <div class="col-sm-9">
+                        <select th:field="*{course}" class="form-control" name="student_course" id="edit-course" placeholder="department">
+                          <option value="computing">Software Engineering</option>
+                          <option value="medicine">Computer Science</option>
+                          <option value="agriculture">Nursing</option>
+                          <option value="sobe">Law</option>
+                          <option value="nursing">Education</option>
+                          <option value="law">Law</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+          </div>
+
+
+
+
+
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" name="Update-Student" class="btn btn-success">Update Student</button>
+          </div>
+          <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+          </form>
 						</div>
 					</div>
 
@@ -467,74 +479,6 @@
 	<script th:src="@{/js/pages/form-wizard.init copy.js}"></script>
 
 
-
-<script th:inline="javascript">
-    /* <![CDATA[ */
-    document.addEventListener("DOMContentLoaded", function() {
-        /* Check for success message and show SweetAlert */
-        const successMessage = /*[[${successMessage != null ? '"' + successMessage + '"' : 'null'}]]*/ '[[${successMessage}]]';
-        if (successMessage !== 'null') {
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: successMessage,
-                showConfirmButton: true,
-            });
-        }
-        /* Check for error message and show SweetAlert */
-        const errorMessage = /*[[${errorMessage != null ? '"' + errorMessage + '"' : 'null'}]]*/ '[[${errorMessage}]]';
-        if (errorMessage !== 'null') {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error!',
-                text: errorMessage,
-                showConfirmButton: true,
-            });
-        }
-    });
-    /* ]]> */
-</script>
-
-
-	<script>
-		$(document).ready(function() {
-			// Handle edit button click
-			$('.sedit-btn').on('click', function() {
-				var bookId = $(this).data('id');
-
-				// AJAX request to fetch book details
-				$.ajax({
-					url : '../helpers/get-book-details.php',
-					type : 'GET',
-					data : {
-						book_id : bookId
-					},
-					dataType : 'json',
-					success : function(data) {
-						// Populate the modal fields with data
-						$('#edit-id').val(data.book_id);
-						$('#edit-regno').val(data.book_regno);
-						$('#edit-fullname').val(data.book_fullname);
-						$('#edit-email').val(data.book_email);
-						$('#edit-national-id').val(data.book_national_id);
-						$('#edit-phone').val(data.book_phone);
-						$('#edit-date-of-birth').val(data.book_date_of_birth);
-						$('#edit-gender').val(data.book_gender);
-						$('#edit-school-id').val(data.book_school_id);
-						$('#edit-class').val(data.book_class);
-						$('#edit-department').val(data.book_department);
-						$('#edit-course').val(data.book_course);
-
-						// Show the modal
-						$('#edit-book').modal('show');
-					}
-				});
-			});
-
-			// Handle form submission for updating the book
-
-		});
-	</script>
 	</div>
 
 
@@ -542,17 +486,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
