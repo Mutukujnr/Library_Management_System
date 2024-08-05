@@ -45,4 +45,14 @@ public class IssuedBooksController {
     	
         return "issuedBooksForm";
     }
+    
+    
+    @GetMapping("/issued-books")
+    public String viewIssuedBooks(Model model,Principal principal) {
+    	UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
+		model.addAttribute("userdata", userDetails);
+    	
+     	model.addAttribute("issuedBooks", issuedBookService.getAllIssuedBooks());
+    	 return "issued-books";
+    }
 }

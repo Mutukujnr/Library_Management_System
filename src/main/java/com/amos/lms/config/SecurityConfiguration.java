@@ -32,7 +32,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/register").permitAll()       
                 .requestMatchers("/CSS/**","/Images/**","/js/**","/plugins/**","/fonts/**","/auth/**").permitAll()
                 .requestMatchers("/home","/students","/add-student","/edit-student/{id}","/delete-student/{id}","/update-student").permitAll()
-                .requestMatchers("/books","/add-book","/editBook/{id}","/deleteBook/{id}","/updateBook","/issueBookForm","/issueBook","/issuedBooks").permitAll())
+                .requestMatchers("/books","/add-book","/editBook/{id}","/deleteBook/{id}","/updateBook","/issueBookForm","/issueBook","/issuedBooks","/returnBook","/issued-books").permitAll())
                 .formLogin(login -> login
                         .loginPage("/login")
                         .loginProcessingUrl("/login")

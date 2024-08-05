@@ -63,15 +63,14 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
-		<nav
-			class="main-header navbar navbar-expand"
-			style="height: 60px;background-color: #124491;">
+		<nav class="main-header navbar navbar-expand"
+			style="height: 60px; background-color: #124491;">
 			<!-- Left navbar links -->
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
-					href="#"><i class="fas fa-bars" style="color:aliceblue"></i></a></li>
+					href="#"><i class="fas fa-bars" style="color: aliceblue"></i></a></li>
 				<li class="nav-item d-none d-sm-inline-block"><a
-					href="../views/index.php" class="nav-link" style="color:aliceblue">Home</a></li>
+					href="../views/index.php" class="nav-link" style="color: aliceblue">Home</a></li>
 			</ul>
 
 			<!-- Right navbar links -->
@@ -84,7 +83,8 @@
 							style="display: flex; align-items: center;"> <span
 							class="account-user-avatar"> <i class="nav-icon"> <img
 									th:src="@{/Images/no-profile.png}"
-									style="width: 40px; height: 40px;border-radius:50%" alt="" srcset="">
+									style="width: 40px; height: 40px; border-radius: 50%" alt=""
+									srcset="">
 							</i>
 						</span> <span th:text="${userdata.fullname}"
 							style="color: gold; font-weight: bold; margin-left: 8px;">
@@ -140,8 +140,8 @@
 							</i>
 								<p>Dashboard</p>
 						</a></li>
-						<li class="nav-item"><a th:href="@{/books}"
-							class="nav-link"> <i class="nav-icon"> <img
+						<li class="nav-item"><a th:href="@{/books}" class="nav-link">
+								<i class="nav-icon"> <img
 									th:src="@{/Images/icons8_Book_26px.png}" alt="" srcset="">
 							</i>
 								<p>Manage Books</p>
@@ -154,18 +154,16 @@
 							</i>
 								<p>Manage Students</p>
 						</a></li>
-						<li class="nav-item has-treeview"><a th:href="@{/issueBookForm}"
-							class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+						<li class="nav-item has-treeview"><a
+							th:href="@{/issueBookForm}" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
 								<i class="nav-icon"> <img
 									th:src="@{/Images/icons8_Sell_26px.png}" alt="" srcset="">
 							</i>
 								<p>Issue Book</p>
 						</a></li>
 						<li class="nav-item has-treeview"><a
-							href="../views/return-book.php
-          " class="nav-link">
-								<!-- <i class="far fa-user-graduate"></i> --> <i
-								class="nav-icon"> <img
+							th:href="@{/issuedBooks}" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+								<i class="nav-icon"> <img
 									th:src="@{/Images/icons8_Return_Purchase_26px.png}" alt=""
 									srcset="">
 							</i>
@@ -231,7 +229,7 @@
 
 
 					<!-- <h5 style="color:#124491;text-align: center;margin: auto;">Books Details</h5> -->
-					<div class="container-fluid"  style="border-top:4px solid aqua">
+					<div class="container-fluid" style="border-top: 4px solid aqua">
 						<div class="card">
 
 
@@ -239,8 +237,8 @@
 								Book</h4>
 							<div class="card-body">
 
-								<form class="form-sample" method="post" th:action="@{/updateBook}"
-									role="form" th:object="${book}">
+								<form class="form-sample" method="post"
+									th:action="@{/updateBook}" role="form" th:object="${book}">
 									<fieldset style="border: 1px solid aqua; padding: 20px;">
 										<legend>Book Info</legend>
 										<!-- <p class="card-description" style="font-weight: bold;margin-left: 3%;margin-bottom: 10px;"> Personal info </p> -->
@@ -420,7 +418,7 @@
 	<script th:src="@{/js/ajax.js}"></script>
 	<!-- Bootstrap 4 -->
 
-<script th:src="@{/js/alerts.js}"></script>
+	<script th:src="@{/js/alerts.js}"></script>
 	<script th:src="@{/js/pages/profile.initcopy.js}
 "></script>
 
@@ -468,32 +466,35 @@
 
 
 
-<script th:inline="javascript">
-    /* <![CDATA[ */
-    document.addEventListener("DOMContentLoaded", function() {
-        /* Check for success message and show SweetAlert */
-        const successMessage = /*[[${successMessage != null ? '"' + successMessage + '"' : 'null'}]]*/ '[[${successMessage}]]';
-        if (successMessage !== 'null') {
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: successMessage,
-                showConfirmButton: true,
-            });
-        }
-        /* Check for error message and show SweetAlert */
-        const errorMessage = /*[[${errorMessage != null ? '"' + errorMessage + '"' : 'null'}]]*/ '[[${errorMessage}]]';
-        if (errorMessage !== 'null') {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error!',
-                text: errorMessage,
-                showConfirmButton: true,
-            });
-        }
-    });
-    /* ]]> */
-</script>
+	<script th:inline="javascript">
+		/* <![CDATA[ */
+		document
+				.addEventListener(
+						"DOMContentLoaded",
+						function() {
+							/* Check for success message and show SweetAlert */
+							const successMessage = /*[[${successMessage != null ? '"' + successMessage + '"' : 'null'}]]*/'[[${successMessage}]]';
+							if (successMessage !== 'null') {
+								Swal.fire({
+									icon : 'success',
+									title : 'Success!',
+									text : successMessage,
+									showConfirmButton : true,
+								});
+							}
+							/* Check for error message and show SweetAlert */
+							const errorMessage = /*[[${errorMessage != null ? '"' + errorMessage + '"' : 'null'}]]*/'[[${errorMessage}]]';
+							if (errorMessage !== 'null') {
+								Swal.fire({
+									icon : 'error',
+									title : 'Error!',
+									text : errorMessage,
+									showConfirmButton : true,
+								});
+							}
+						});
+		/* ]]> */
+	</script>
 
 
 	<script>

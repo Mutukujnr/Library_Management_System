@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="https://www.thymeleaf.org">
@@ -6,7 +7,7 @@
 <!-- Mirrored from themes.getappui.com/techzaa/velonic/layouts/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 11:14:42 GMT -->
 <head>
 <meta charset="utf-8" />
-<title>Home</title>
+<title>Issued Books</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta
 	content="A fully responsive admin theme which can be used to build CRM, CMS,ERP etc."
@@ -20,9 +21,6 @@
 	id="app-style">
 <link rel="shortcut icon" th:href="@{/CSS/icons.min.css}"
 	type="text/css" id="app-style">
-
-<link rel="shortcut icon" th:href="@{/CSS/toast.css}" type="text/css"
-	id="app-style">
 
 <!-- Font Awesome -->
 <link rel="stylesheet"
@@ -61,16 +59,10 @@
 	rel="stylesheet">
 <script th:src="jquery.ui.datepicker.monthyearpicker.js"></script>
 
-<style>
-.fade-in-element {
-	animation: fade-in 5s ease;
-}
-</style>
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
-		<!-- Navbar -->
 		<nav class="main-header navbar navbar-expand"
 			style="height: 60px; background-color: #124491;">
 			<!-- Left navbar links -->
@@ -232,178 +224,14 @@
 
 			<!-- Main content -->
 			<section class="content">
-
 				<div class="container-fluid">
-					<!-- <div th:if="${param.success}" id="myDiv" class="bg-success fade-in-element" style="color:white;padding:6px;width:30%;margin:auto">
-					<p style="text-align:center">Login sucessful</p>
-				</div> -->
-
-
-					<div th:if="${param.success}">
-						<script th:inline="javascript">
-							/*<![CDATA[*/
-							$(document).ready(function() {
-								$.toast({
-									heading : 'Success',
-									text : 'Login successful!',
-									showHideTransition : 'slide',
-									icon : 'success',
-									position : 'top-right'
-								});
-							});
-							/*]]>*/
-						</script>
-					</div>
-
 					<!-- Small boxes (Stat box) -->
-					<div class="row">
-						<div class="col-lg-3 col-6">
-							<!-- small box -->
-							<div class="small-box"
-								style="background-color: white; border-bottom: 8px solid dodgerblue; border-top: 2px solid dodgerblue; display: grid; grid-template-columns: 2fr 1fr; align-items: center;">
-								<div class="inner">
 
-									<h1 th:text="${bookCount}"
-										style="color: dodgerblue; font-size: 50px;"></h1>
-
-									<p>
-									<h5 class="text-primary">Books</h5>
-									</p>
-								</div>
-								<div class="icon">
-									<i class="fas"> <img
-										th:src="@{/Images/icons8_Book_Shelf_50px.png}" alt=""
-										srcset="">
-									</i>
-								</div>
-								<!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
-							</div>
-						</div>
-						<!-- ./col -->
-						<div class="col-lg-3 col-6">
-							<!-- small box -->
-							<div class="small-box"
-								style="background-color: white; border-bottom: 8px solid aqua; border-top: 2px solid aqua; display: grid; grid-template-columns: 2fr 1fr; align-items: center;">
-								<div class="inner">
-
-									<h1 th:text="${studentCount}"
-										style="color: aqua; font-size: 50px;"></h1>
-
-									<p>
-									<h5 class="text-success">Students</h5>
-									</p>
-								</div>
-								<div class="icon">
-									<i class="fas"> <img
-										th:src="@{/Images/icons8_People_50px.png}" alt="" srcset="">
-									</i>
-								</div>
-								<!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
-							</div>
-						</div>
-						<!-- ./col -->
-						<div class="col-lg-3 col-6">
-							<!-- small box -->
-							<div class="small-box"
-								style="background-color: white; border-bottom: 8px solid #ffcd3d; border-top: 2px solid #ffcd3d; display: grid; grid-template-columns: 2fr 1fr; align-items: center;">
-								<div class="inner">
-
-									<h1 th:text="${issuedBooksCount}"
-										style="color: black; font-size: 50px;"></h1>
-
-									<p>
-									<h5 class="text-warning">Issued Books</h5>
-									</p>
-								</div>
-								<div class="icon">
-									<i class="fas"> <img
-										th:src="@{/Images/icons8_Sell_50px.png}" alt="" srcset="">
-									</i>
-								</div>
-								<!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
-							</div>
-						</div>
-						<!-- ./col -->
-						<div class="col-lg-3 col-6">
-							<!-- small box -->
-							<div class="small-box"
-								style="background-color: white; border-bottom: 8px solid red; border-top: 2px solid red; display: grid; grid-template-columns: 2fr 1fr; align-items: center;">
-								<div class="inner">
-									<h1 style="color: red; font-size: 50px;">8</h1>
-
-									<p>
-									<h5 class="text-danger">Defaulter List</h5>
-									</p>
-								</div>
-								<div class="icon">
-									<i class="fas"> <img
-										th:src="@{/Images/icons8_List_of_Thumbnails_50px.png}" alt=""
-										srcset="">
-									</i>
-								</div>
-								<!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
-							</div>
-						</div>
-						<!-- ./col -->
-					</div>
-					<!-- /.row -->
-
-					<!-- /.row -->
-					<h5 class="text-primary"
-						style="margin-bottom: -45px; text-align: center">Book Details</h5>
-					<div class="row " style="margin-top: 50px; margin-bottom: 30px">
-						<!-- <h5 style="color:#124491;text-align: center;margin: auto;">Books Details</h5> -->
-						<div class="container-fluid">
-							<div class="card">
-
-								<!-- /.card-header -->
-								<div class="card-body table-responsive p-0">
-
-									<table id="example1"
-										class="table table-hover text-nowrap table-head-fixed table-bordered table-sm">
-										<thead>
-											<tr>
-												<th>ID</th>
-												<th>Book Title</th>
-												<th>Authors</th>
-												<th>ISBN</th>
-												<th>Publisher</th>
-												<th>Publication Date</th>
-												<th>Edition</th>
-												<th>Language</th>
-												<th>Category</th>
-
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="book: ${books}">
-												<td th:text="${book.title}"></td>
-												<td th:text="${book.authors}"></td>
-												<td th:text="${book.isbn}"></td>
-												<td th:text="${book.publisher}"></td>
-												<td th:text="${book.publication_date}"></td>
-												<td th:text="${book.edition}"></td>
-												<td th:text="${book.language}"></td>
-												<td th:text="${book.category}"></td>
-												<td th:text="${book.quantity}"></td>
-
-
-											</tr>
-
-										</tbody>
-									</table>
-								</div>
-								<!-- /.card-body -->
-							</div>
-							<!-- /.card -->
-						</div>
-					</div>
-					<!-- /.row -->
 
 					<h5 class="text-primary"
-						style="margin-bottom: -45px; text-align: center">Student
-						Details</h5>
-					<div class="row " style="margin-top: 50px;">
+						style="margin-bottom: -45px; text-align: center">Issued Books</h5>
+					<div class="row "
+						style="margin-top: 50px; border-top: 4px solid aqua">
 						<!-- <h5 style="color:#124491;text-align: center;margin: auto;">Books Details</h5> -->
 						<div class="container-fluid">
 							<div class="card">
@@ -412,66 +240,78 @@
 								<div class="card-body table-responsive p-0">
 
 									<table id="example2"
-										class="table table-hover text-nowrap table-head-fixed table-bordered table-sm">
-										<thead>
+										class="table table-hover table-sm text-nowrap table-head-fixed table-bordered">
+
+
+
+
+										<thead class="thead -light">
 											<tr>
-												<th>s/no</th>
+
+												<th>Student Name</th>
 												<th>Registration No</th>
-												<th>FullName</th>
-												<th>Email</th>
-												<th>School ID</th>
-												<th>Phone</th>
-												<th>Gender</th>
-												<th>Class</th>
+												<th>Class/Year</th>
 												<th>Department</th>
-												<th>Course</th>
+												<th>course</th>
+												<th>Book Title</th>
+												<th>Book isbn</th>
+												<th>Issue Date</th>
+												<th>Return Date</th>
 											</tr>
 										</thead>
 										<tbody>
-
-											<tr th:each="student: ${allstudents}">
-												<td th:text="${student.fullname}"></td>
-												<td th:text="${student.email}"></td>
-												<td th:text="${student.national_id}"></td>
-												<td th:text="${student.phone}"></td>
-												<td th:text="${student.date_of_birth}"></td>
-												<td th:text="${student.gender}"></td>
-												<td th:text="${student.school_id}"></td>
-												<td th:text="${student.year_of_study}"></td>
-												<td th:text="${student.department}"></td>
-												<td th:text="${student.course}"></td>
-
+											<tr th:each="issuedBook : ${issuedBooks}">
+												<td th:text="${issuedBook.fullname}"></td>
+												<td th:text="${issuedBook.student_regno}"></td>
+												<td th:text="${issuedBook.year_of_study}"></td>
+												<td th:text="${issuedBook.department}"></td>
+												<td th:text="${issuedBook.course}"></td>
+												<td th:text="${issuedBook.title}"></td>
+												<td th:text="${issuedBook.isbn}"></td>
+												<td th:text="${issuedBook.issueDate}"></td>
+												<td th:text="${issuedBook.returnDate}"></td>
 											</tr>
 
 										</tbody>
 									</table>
+									
+
 								</div>
+
 								<!-- /.card-body -->
 							</div>
 							<!-- /.card -->
 						</div>
 					</div>
-
+					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
-
 			</section>
+			<!-- /.content -->
+
 
 		</div>
 
 
+
+		<!-- Main Footer -->
+		<footer class="main-footer"
+			style="background-color: #fff; margin: auto;">
+			<!-- To the right -->
+			<div class="float-right d-none d-sm-inline">©Library Management
+				System</div>
+			<!-- Default to the left -->
+			<div class="float-left">
+				<strong>Copyright &copy;2024 <a href="#">DigitalVortex</a>.
+				</strong> All rights reserved.
+			</div>
+		</footer>
 
 		<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
 		<script th:src="@{/js/ajax.js}"></script>
 		<!-- Bootstrap 4 -->
 
 		<script th:src="@{/js/pages/profile.initcopy.js}
-"></script>
-
-
-		<script th:src="@{/js/toast.js}
-"></script>
-		<script th:src="@{/js/jquery.js}
 "></script>
 
 		<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
@@ -517,44 +357,24 @@
 		<!-- Select  -->
 		<script th:src="@{/js/bootstrap.wizard.min.js}"></script>
 		<script th:src="@{/js/pages/form-wizard.init copy.js}"></script>
-
-		<script>
-			var myDiv = document.getElementById('myDiv');
-
-			setTimeout(function() {
-				myDiv.style.display = 'none';
-			}, 4000);
-		</script>
-
-		<script>
-			$(function() {
-				$("#example1").DataTable();
-				$('#example2').DataTable({
-					"paging" : true,
-					"lengthChange" : true,
-					"searching" : true,
-					"ordering" : true,
-					"info" : true,
-					"autoWidth" : true,
-				});
-			});
-		</script>
-
-		<!-- Main Footer -->
-		<footer class="main-footer"
-			style="background-color: #fff; margin: auto;">
-			<!-- To the right -->
-			<div class="float-right d-none d-sm-inline">©Library Management
-				System</div>
-			<!-- Default to the left -->
-			<div class="float-left">
-				<strong>Copyright &copy;2024 <a href="#">DigitalVortex</a>.
-				</strong> All rights reserved.
-			</div>
-		</footer>
-
+		
 	</div>
+
+
 
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

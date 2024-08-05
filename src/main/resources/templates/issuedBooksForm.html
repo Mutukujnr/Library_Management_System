@@ -6,7 +6,7 @@
 <!-- Mirrored from themes.getappui.com/techzaa/velonic/layouts/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 11:14:42 GMT -->
 <head>
 <meta charset="utf-8" />
-<title>Home</title>
+<title>Return Book</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta
 	content="A fully responsive admin theme which can be used to build CRM, CMS,ERP etc."
@@ -121,8 +121,7 @@
 			style="background-color: #124491;">
 			<!-- Brand Logo -->
 			<a href="../views/index.php" class="brand-link"> <!-- <img src="../public/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-				<h5 class="brand-text font-weight-normal text-yellow">Library
-					Management App</h5>
+				<h5 class="brand-text font-weight-normal text-yellow">Library Management App</h5>
 			</a>
 
 			<!-- Sidebar -->
@@ -166,10 +165,8 @@
 								<p>Issue Book</p>
 						</a></li>
 						<li class="nav-item has-treeview"><a
-							href="../views/return-book.php
-          " class="nav-link">
-								<!-- <i class="far fa-user-graduate"></i> --> <i
-								class="nav-icon"> <img
+							th:href="@{/issuedBooks}" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+								<i class="nav-icon"> <img
 									th:src="@{/Images/icons8_Return_Purchase_26px.png}" alt=""
 									srcset="">
 							</i>
@@ -222,78 +219,75 @@
 					<div class="container-fluid">
 						<div class="row w-100">
 							<div class="col-lg-9 col-6">
-								
-									<div class="bg-white w-100">
-										<div
-											class="row w-50 d-flex align-items-center"
-											style="margin:auto;justify-content: space-around; border-bottom: 2px solid red">
-											<h2 class="text-center mb-4 text-danger">Issued Books</h2>
-											<img th:src="@{/Images/icons8_Book_50px_1.png}"
-												class="text-center mb-4"
-												style="width: 80px; height: 80px">
-										</div>
-										</div>
 
-										<table
-											class="table table-hover table-sm text-nowrap table-head-fixed table-bordered w-80 bg-white">
-											<thead>
-												<tr>
-													<th>Student Name</th>
-													<th>Registration No</th>
-													<th>Class/Year</th>
-												
-													<th>course</th>
-													<th>Book Title</th>
-													<th>Book isbn</th>
-													<th>Issue Date</th>
-													<th>Return Date</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr th:each="issuedBook : ${issuedBooks}">
-													<td th:text="${issuedBook.fullname}"></td>
-													<td th:text="${issuedBook.student_regno}"></td>
-													<td th:text="${issuedBook.year_of_study}"></td>
-													<!-- <td th:text="${issuedBook.department}"></td> -->
-													<td th:text="${issuedBook.course}"></td>
-													<td th:text="${issuedBook.title}"></td>
-													<td th:text="${issuedBook.isbn}"></td>
-													<td th:text="${issuedBook.issueDate}"></td>
-													<td th:text="${issuedBook.returnDate}"></td>
-												</tr>
-											</tbody>
-										</table>
-									
-								
+								<div class="bg-white w-100">
+									<div class="row w-50 d-flex align-items-center"
+										style="margin: auto; justify-content: space-around; border-bottom: 2px solid red">
+										<h2 class="text-center mb-4 text-danger">Issued Books</h2>
+										<img th:src="@{/Images/icons8_Book_50px_1.png}"
+											class="text-center mb-4" style="width: 80px; height: 80px">
+									</div>
+								</div>
+
+								<table
+									class="table table-hover table-sm text-nowrap table-head-fixed table-bordered w-80 bg-white">
+									<thead>
+										<tr>
+											<th>Student Name</th>
+											<th>Registration No</th>
+											<th>Class/Year</th>
+
+											<th>course</th>
+											<th>Book Title</th>
+											<th>Book isbn</th>
+											<th>Issue Date</th>
+											<th>Return Date</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="issuedBook : ${issuedBooks}">
+											<td th:text="${issuedBook.fullname}"></td>
+											<td th:text="${issuedBook.student_regno}"></td>
+											<td th:text="${issuedBook.year_of_study}"></td>
+											<!-- <td th:text="${issuedBook.department}"></td> -->
+											<td th:text="${issuedBook.course}"></td>
+											<td th:text="${issuedBook.title}"></td>
+											<td th:text="${issuedBook.isbn}"></td>
+											<td th:text="${issuedBook.issueDate}"></td>
+											<td th:text="${issuedBook.returnDate}"></td>
+										</tr>
+									</tbody>
+								</table>
+
+
 							</div>
-							
-							
+
+
 							<div class="col-lg-3 col-6 bg-white">
-							
-										<div
-											class="row w-100 d-flex align-items-center"
-											style="margin:auto;justify-content: space-around; border-bottom: 2px solid red">
-											<h2 class="text-center mb-4 text-danger">Return Book</h2>
-											<img th:src="@{/Images/icons8_Books_52px_1.png}"
-												class="text-center mb-4"
-												style="width: 80px; height: 80px">
-										</div>
-							<form th:action="@{/issueBook}" method="post" role="form" th:object="${issuedBook}" >
-										<div class="form-group">
-											<label for="student">Select Student:</label> <select class="form-control"
-												id="student" name="studentId" required>
-												<option th:each="student : ${students}"
-													th:text="${student.fullname} + ' ' + ${student.student_regno} "></option>
-											</select>
-										</div>
-										<div class="form-group">
-											<label for="book">Select Book:</label> <select class="form-control" id="book"
-												name="bookId" required>
-												<option th:each="book : ${books}" 
-													th:text="${book.title} + ' ' + ${book.isbn}"></option>
-											</select>
-										</div>
-										<!-- <div class="form-group">
+
+								<div class="row w-100 d-flex align-items-center"
+									style="margin: auto; justify-content: space-around; border-bottom: 2px solid red">
+									<h2 class="text-center mb-4 text-danger">Return Book</h2>
+									<img th:src="@{/Images/icons8_Books_52px_1.png}"
+										class="text-center mb-4" style="width: 80px; height: 80px">
+								</div>
+								<form th:action="@{/returnBook}" method="post" role="form"
+									th:object="${issuedBook}">
+									<div class="form-group">
+										<label for="student">Select Student:</label> <select
+											class="form-control" id="student" name="studentId" required>
+											<option th:each="student : ${students}"
+												th:value="${student.student_regno}" th:text="${student.fullname} + ' ' + ${student.student_regno} "></option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="book">Select Book:</label> <select
+											class="form-control" id="book" name="bookId" required>
+											<option th:each="book : ${books}" th:value="${book.isbn}"
+												th:text="${book.title} + ' ' + ${book.isbn}"></option>
+										</select>
+									</div>
+									<!-- <div class="form-group">
 											<label for="subject">Issue Date</label> <input type="date"
 												class="form-control" id="issueDate"
 												placeholder="Enter issue date">
@@ -303,10 +297,12 @@
 												class="form-control" id="returnDate"
 												placeholder="Enter return date">
 										</div> -->
-										<button type="submit" class="btn btn-success btn-block mt-5 mb-5">Return Book</button>
-									</form>
+									<button type="submit"
+										class="btn btn-success btn-block mt-5 mb-5">Return
+										Book</button>
+								</form>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>

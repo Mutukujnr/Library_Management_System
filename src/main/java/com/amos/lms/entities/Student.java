@@ -1,13 +1,16 @@
 package com.amos.lms.entities;
 
+import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,21 +18,30 @@ import jakarta.persistence.Table;
 public class Student {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(
+			unique = true,
+			nullable = false
+			)
 	private String student_regno;
 	
 	private String fullname;
 	
+	@Column(
+			unique = true,
+			nullable = false
+			
+			)
 	private String email;
 	
 	private String national_id;
 	
 	private String phone;
 	
-	// @DateTimeFormat(pattern = "MM-dd-yyyy")
-	private LocalDate date_of_birth;
+	
+	private Date date_of_birth;
 	
 	private String gender;
 	
@@ -40,14 +52,19 @@ public class Student {
 	private String department;
 	
 	private String course;
+	
+	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+	private List<IssueBook> issueBook;
 
 	public Student() {
 		super();
 	}
 
+	
+
 	public Student(String student_regno, String fullname, String email, String national_id, String phone,
-			LocalDate date_of_birth, String gender, String school_id, String year_of_study, String department,
-			String course) {
+			Date date_of_birth, String gender, String school_id, String year_of_study, String department,
+			String course, List<IssueBook> issueBook) {
 		super();
 		this.student_regno = student_regno;
 		this.fullname = fullname;
@@ -60,7 +77,10 @@ public class Student {
 		this.year_of_study = year_of_study;
 		this.department = department;
 		this.course = course;
+		this.issueBook = issueBook;
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -110,11 +130,11 @@ public class Student {
 		this.phone = phone;
 	}
 
-	public LocalDate getDate_of_birth() {
+	public Date getDate_of_birth() {
 		return date_of_birth;
 	}
 
-	public void setDate_of_birth(LocalDate date_of_birth) {
+	public void setDate_of_birth(Date date_of_birth) {
 		this.date_of_birth = date_of_birth;
 	}
 
@@ -156,6 +176,18 @@ public class Student {
 
 	public void setCourse(String course) {
 		this.course = course;
+	}
+
+
+
+	public List<IssueBook> getIssueBook() {
+		return issueBook;
+	}
+
+
+
+	public void setIssueBook(List<IssueBook> issueBook) {
+		this.issueBook = issueBook;
 	}
 	
 	

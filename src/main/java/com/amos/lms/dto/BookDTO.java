@@ -1,12 +1,17 @@
 package com.amos.lms.dto;
 
-import java.time.LocalDate;
+import java.sql.Date;
+import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.amos.lms.entities.IssueBook;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
 
 public class BookDTO {
+	
 
-private String title;
+	private String title;
 	
 	private String authors;
 	
@@ -15,8 +20,8 @@ private String title;
 	
 	private String publisher;
 	
-	@DateTimeFormat(pattern = "MM-dd-yyyy")
-	private LocalDate publication_date;
+	
+	private Date publication_date;
 	
 	private String edition;
 	
@@ -28,8 +33,8 @@ private String title;
 	
 	private String status;
 	
-	
-	
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+	private List<IssueBook> issueBook;
 
 	public BookDTO() {
 		super();
@@ -38,8 +43,22 @@ private String title;
 
 
 
-	public BookDTO(String title, String authors, String isbn, String publisher, LocalDate publication_date,
-			String edition, String langauge, String category, int quantity, String status) {
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public BookDTO(String title, String authors, String isbn, String publisher, Date publication_date, String edition,
+			String language, String category, int quantity, String status, List<IssueBook> issueBook) {
 		super();
 		this.title = title;
 		this.authors = authors;
@@ -47,11 +66,26 @@ private String title;
 		this.publisher = publisher;
 		this.publication_date = publication_date;
 		this.edition = edition;
-		this.setLanguage(langauge);
+		this.language = language;
 		this.category = category;
 		this.quantity = quantity;
 		this.status = status;
+		this.issueBook = issueBook;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -126,14 +160,14 @@ private String title;
 
 
 
-	public LocalDate getPublication_date() {
+	public Date getPublication_date() {
 		return publication_date;
 	}
 
 
 
 
-	public void setPublication_date(LocalDate publication_date) {
+	public void setPublication_date(Date publication_date) {
 		this.publication_date = publication_date;
 	}
 
@@ -196,6 +230,20 @@ private String title;
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+
+
+
+	public List<IssueBook> getIssueBook() {
+		return issueBook;
+	}
+
+
+
+
+	public void setIssueBook(List<IssueBook> issueBook) {
+		this.issueBook = issueBook;
 	}
 	
 	

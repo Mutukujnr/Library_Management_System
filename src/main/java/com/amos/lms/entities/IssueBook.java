@@ -17,11 +17,11 @@ public class IssueBook {
 	    private Long id;
 
 	    @ManyToOne
-	    @JoinColumn(name = "student_id")
+	    @JoinColumn(name = "student_id", nullable = false)
 	    private Student student;
 
 	    @ManyToOne
-	    @JoinColumn(name = "book_id")
+	    @JoinColumn(name = "book_id", nullable = false)
 	    private Books book;
 
 	    private LocalDate issueDate;

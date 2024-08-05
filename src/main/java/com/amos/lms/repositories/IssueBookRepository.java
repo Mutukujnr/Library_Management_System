@@ -1,6 +1,7 @@
 package com.amos.lms.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -27,4 +28,13 @@ public interface IssueBookRepository extends JpaRepository<IssueBook,Long>{
 	           "FROM IssueBook ib " +
 	           "JOIN ib.book b")
 	    List<IssueBookDTO> getBooks();
+	 
+		/*
+		 * @Query("DELETE FROM issue_book ib WHERE s.student_regno =:student_regno AND b.isbn =: isbn"
+		 * + "JOIN ib.student s " + "JOIN ib.book b" ) void deleteByRegNoAndIsbn(String
+		 * student_regno, String isbn);
+		 */
+	 
+	 
+//	 Optional<IssueBook> findByStudentRegnoAndIsbn(String student_regno, String isbn);
 }

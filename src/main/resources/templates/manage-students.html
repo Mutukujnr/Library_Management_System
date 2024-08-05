@@ -171,10 +171,8 @@ animation: fade-in 5s ease;
 								<p>Issue Book</p>
 						</a></li>
 						<li class="nav-item has-treeview"><a
-							href="../views/return-book.php
-          " class="nav-link">
-								<!-- <i class="far fa-user-graduate"></i> --> <i
-								class="nav-icon"> <img
+							th:href="@{/issuedBooks}" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+								<i class="nav-icon"> <img
 									th:src="@{/Images/icons8_Return_Purchase_26px.png}" alt=""
 									srcset="">
 							</i>
@@ -579,7 +577,7 @@ animation: fade-in 5s ease;
 
 										<thead class="table-light">
 
-											<th>s/no</th>
+											
 											<th>Registration No</th>
 											<th>FullName</th>
 											<th>Email</th>
@@ -596,13 +594,15 @@ animation: fade-in 5s ease;
 										</thead>
 										<tbody>
 											<tr th:each="student: ${studentPage}">
+												<td th:text="${student.student_regno}"></td>
 												<td th:text="${student.fullname}"></td>
 												<td th:text="${student.email}"></td>
-												<td th:text="${student.national_id}"></td>
-												<td th:text="${student.phone}"></td>
-												<td th:text="${student.date_of_birth}"></td>
-												<td th:text="${student.gender}"></td>
 												<td th:text="${student.school_id}"></td>
+												<td th:text="${student.phone}"></td>
+												<td th:text="${student.gender}"></td>
+												
+												
+												
 												<td th:text="${student.year_of_study}"></td>
 												<td th:text="${student.department}"></td>
 												<td th:text="${student.course}"></td>
