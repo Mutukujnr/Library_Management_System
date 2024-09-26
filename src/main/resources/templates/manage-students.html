@@ -1,0 +1,758 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+
+
+<!-- Mirrored from themes.getappui.com/techzaa/velonic/layouts/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 11:14:42 GMT -->
+<head>
+<meta charset="utf-8" />
+<title>Students</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+	content="A fully responsive admin theme which can be used to build CRM, CMS,ERP etc."
+	name="description" />
+<meta content="Techzaa" name="author" />
+
+<!-- CSS -->
+<link th:href="@{/CSS/adminlte.min.css}" rel="stylesheet"
+	type="text/css" id="app-style">
+<link th:href="@{/CSS/app.min.css}" rel="stylesheet" type="text/css"
+	id="app-style">
+<link rel="shortcut icon" th:href="@{/CSS/icons.min.css}"
+	type="text/css" id="app-style">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	rel="stylesheet">
+<!-- Select2 -->
+<link rel="stylesheet" th:href="@{/plugins/select2/css/select2.min.css}">
+<link rel="stylesheet"
+	th:href="@{/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+<!-- Sweet Alerts -->
+<link rel="stylesheet"
+	th:href="@{/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css}">
+<!-- Toastr -->
+<link rel="stylesheet" th:href="@{/plugins/toastr/toastr.min.css}">
+<!-- Data tables Buttons -->
+<link rel="stylesheet"
+	th:href="@{/plugins/datatables-buttons/css/buttons.bootstrap4.min.css}">
+<!-- daterange picker -->
+<link rel="stylesheet"
+	th:href="@{/plugins/daterangepicker/daterangepicker.css}">
+<!-- DataTables -->
+<link rel="stylesheet"
+	th:href="@{/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css}">
+<link rel="stylesheet"
+	th:href="@{/plugins/datatables-responsive/css/responsive.bootstrap4.min.css}">
+<!-- Full Calendar -->
+<link rel="stylesheet"
+	th:href="@{/plugins/fullcalendar/lib/main.min.css}">
+<script th:src="@{/plugins/fullcalendar/lib/main.min.js}"></script>
+
+<link th:href="httpsjquery.ui.datepicker.monthyearpicker.css"
+	rel="stylesheet">
+<script th:src="jquery.ui.datepicker.monthyearpicker.js"></script>
+<style>
+@keyframes fade-in{
+0%{opacity: 1}
+100%{opacity: 0}
+}
+
+.fade-in-element{
+animation: fade-in 5s ease;
+}
+</style>
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+	<div class="wrapper">
+		<nav
+			class="main-header navbar navbar-expand"
+			style="height: 60px;background-color: #124491;">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
+					href="#"><i class="fas fa-bars" style="color:aliceblue"></i></a></li>
+				<li class="nav-item d-none d-sm-inline-block"><a
+					th:href="@{/home}" class="nav-link" style="color:aliceblue">Home</a></li>
+			</ul>
+
+			<!-- Right navbar links -->
+			<ul class="navbar-nav ml-auto">
+
+				<li class="nav-item dropdown">
+					<div class="dropdown ">
+						<a href="javascript:void(0)" class="chip ml-3 nav-link"
+							data-toggle="dropdown"
+							style="display: flex; align-items: center;"> <span
+							class="account-user-avatar"> <i class="nav-icon"> <img
+									th:src="@{/Images/no-profile.png}"
+									style="width: 40px; height: 40px;border-radius:50%" alt="" srcset="">
+							</i>
+						</span> <span th:text="${userdata.fullname}"
+							style="color: gold; font-weight: bold; margin-left: 8px;">
+						</span></a>
+						<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+							<a class="dropdown-item" href="page-profile.html"> <i
+								class="dropdown-icon fe fe-user"> <img
+									th:src="@{/Images/icons8-male-user-50.png}" alt=""
+									style="width: 24px; height: 24px">
+							</i> Profile
+							</a> <a class="dropdown-item" href="javascript:void(0)"> <i
+								class="dropdown-icon fe fe-help-circle"> <img
+									th:src="@{/Images/icons8-help-24.png}" alt="">
+							</i> Need help?
+							</a> <a class="dropdown-item" data-toggle="modal" href="#end_session"><i
+								class="nav-icon"> <img
+									th:src="@{/Images/icons8-logout-48.png}" alt="" srcset=""
+									style="width: 30px; height: 30px">
+							</i> Log out</a>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+		<aside class="main-sidebar sidebar-dark-primary elevation-4"
+			style="background-color: #124491;">
+			<!-- Brand Logo -->
+			<a th:href="@{/home}" class="brand-link"> <!-- <img src="../public/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
+				<h5 class="brand-text font-weight-normal text-yellow">Library
+					Management App</h5>
+			</a>
+
+			<!-- Sidebar -->
+			<div class="sidebar">
+				<!-- Sidebar user panel (optional) -->
+
+
+				<!-- Sidebar Menu -->
+				<nav class="mt-2">
+					<ul class="nav nav-pills nav-sidebar flex-column"
+						data-widget="treeview" role="menu" data-accordion="false"
+						style="height: 85vh; display: grid; grid-template-columns: auto; justify-content: space-between;">
+						<!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+						<li class="nav-item has-treeview menu-open"><a
+							th:href="@{/home}" class="nav-link"> <i
+								class="nav-icon"> <img
+									th:src="@{/Images/icons8_Library_26px_1.png}" alt="" srcset="">
+							</i>
+								<p>Dashboard</p>
+						</a></li>
+						<li class="nav-item"><a th:href="@{/books}"
+							class="nav-link"> <i class="nav-icon"> <img
+									th:src="@{/Images/icons8_Book_26px.png}" alt="" srcset="">
+							</i>
+								<p>Manage Books</p>
+						</a></li>
+						<li class="nav-item has-treeview"><a th:href="@{/students}"
+							class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+								<i class="nav-icon"> <img
+									th:src="@{/Images/icons8_Read_Online_26px.png}" alt=""
+									srcset="">
+							</i>
+								<p>Manage Students</p>
+						</a></li>
+						<li class="nav-item has-treeview"><a th:href="@{/issueBookForm}"
+							class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+								<i class="nav-icon"> <img
+									th:src="@{/Images/icons8_Sell_26px.png}" alt="" srcset="">
+							</i>
+								<p>Issue Book</p>
+						</a></li>
+						<li class="nav-item has-treeview"><a
+							th:href="@{/issuedBooks}" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+								<i class="nav-icon"> <img
+									th:src="@{/Images/icons8_Return_Purchase_26px.png}" alt=""
+									srcset="">
+							</i>
+								<p>Return Book</p>
+						</a></li>
+						<li class="nav-item has-treeview"><a
+							href="../views/all-records.php" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+								<i class="nav-icon"> <img
+									th:src="@{/Images/icons8_View_Details_26px.png}" alt=""
+									srcset="">
+							</i>
+								<p>view Records</p>
+						</a></li>
+						<li class="nav-item has-treeview"><a
+							href="../views/issued-books.php" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+								<i class="nav-icon"> <img
+									th:src="@{/Images/icons8_Books_26px.png}" alt="" srcset="">
+							</i>
+								<p>View Issued Books</p>
+						</a></li>
+						<li class="nav-item has-treeview"><a
+							href="../views/defaulters.php" class="nav-link"> <i
+								class="nav-icon"> <img
+									th:src="@{/Images/icons8_Conference_26px.png}" alt="" srcset="">
+							</i>
+								<p>Defaulter List</p>
+						</a></li>
+
+					</ul>
+				</nav>
+				<!-- /.sidebar-menu -->
+			</div>
+			<!-- /.sidebar -->
+		</aside>
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<!-- <h1 class="m-0 text-dark">Dashboard</h1> -->
+						</div>
+						<!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<!-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard v1</li> -->
+							</ol>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<!-- Small boxes (Stat box) -->
+
+<div th:if="${param.success}" id="myDiv" class="bg-success fade-in-element" style="color:white;padding:10px;width:50%;margin:auto">
+					<p>Student added successfully</p>
+				</div>
+
+<div th:if="${param.update}" id="myDiv" class="bg-success fade-in-element" style="color:white;padding:10px;width:50%;margin:auto">
+					<p>Student updated successfully</p>
+				</div>
+
+					<h5 class="text-primary"
+						style="margin-bottom: -45px; text-align: center">Manage
+						Students</h5>
+					<div class="row " style="margin-top: 50px;border-top:4px solid aqua">
+						<!-- <h5 style="color:#124491;text-align: center;margin: auto;">Books Details</h5> -->
+						<div class="container-fluid">
+							<div class="card">
+								<div class="card-header row"  style="width:100%;">
+									<button type="button" class="btn btn-success"
+										data-toggle="modal" data-target="#add-student">Register
+										a new Student</button>
+
+									<div class="row"  style="margin-left:auto">
+										<form class="row" th:action="@{/students}" method="GET">
+											<div class="col-auto">
+
+												<select class="input-group-append"
+													aria-lebel=".form-select-sm example" name="sortBy">
+
+													<option selected>Sort By Names</option>
+													
+													<option value="fullname"
+														th:selected="${sortBy == 'fullname'}">FullName</option>
+													<option value="email" th:selected="${sortBy == 'email'}">Email</option>
+													
+												</select>
+
+											</div>
+
+
+											<div class="col-auto">
+												<button class="btn btn-secondary btn-sm" type="submit">Apply</button>
+											</div>
+										</form>
+									</div>
+
+
+									<div class="modal fade" id="add-student">
+										<div class="modal-dialog modal-xl modal-dialog-scrollable">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h4 class="modal-title"></h4>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<div class="col-12">
+														<div class="card">
+															<div class="card-header">
+																<h4 class="header-title mb-0"></h4>
+															</div>
+															<div class="card-body">
+																<div th:if="${param.success}" class="mb-3 bg-success">
+																	<p class="text-muted mb-3" style="color: red">Book
+																		added successfully.
+																</div>
+																<form method="post" th:action="@{/add-student}"
+																	role="form" th:object="${students}">
+																	<div id="progressbarwizard">
+
+																		<ul
+																			class="nav nav-pills nav-justified form-wizard-header mb-3">
+																			<li class="nav-item"><a href="#account-2"
+																				data-bs-toggle="tab" data-toggle="tab"
+																				class="nav-link rounded-0 py-2"> <i
+																					class="ri-account-circle-line fw-normal fs-20 align-middle me-1"></i>
+																					<span class="d-none d-sm-inline">Personal
+																						Info</span>
+																			</a></li>
+																			<li class="nav-item"><a href="#profile-tab-2"
+																				data-bs-toggle="tab" data-toggle="tab"
+																				class="nav-link rounded-0 py-2"> <i
+																					class="ri-profile-line fw-normal fs-20 align-middle me-1"></i>
+																					<span class="d-none d-sm-inline">Academic
+																						Info</span>
+																			</a></li>
+																			<li class="nav-item"><a href="#finish-2"
+																				data-bs-toggle="tab" data-toggle="tab"
+																				class="nav-link rounded-0 py-2"> <i
+																					class="ri-check-double-line fw-normal fs-20 align-middle me-1"></i>
+																					<span class="d-none d-sm-inline">Finish</span>
+																			</a></li>
+																		</ul>
+
+																		<div class="tab-content b-0 mb-0">
+
+																			<div id="bar" class="progress mb-3"
+																				style="height: 7px;">
+																				<div
+																					class="bar progress-bar progress-bar-striped progress-bar-animated bg-success"></div>
+																			</div>
+
+																			<div class="tab-pane" id="account-2">
+																				<div class="row">
+																					<div class="col-12">
+																						<div class="row mb-3">
+																							<label class="col-md-3 col-form-label"
+																								for="name1">Registration No.</label>
+																							<div class="col-md-9">
+																								<input type="text" th:field="*{student_regno}"
+																									id="name1" name="student_regno"
+																									class="form-control"
+																									placeholder="Student Registration number">
+																							</div>
+																						</div>
+																						<div class="row mb-3">
+																							<label class="col-md-3 col-form-label"
+																								for="userName1">Full name</label>
+																							<div class="col-md-9">
+																								<input type="text" th:field="*{fullname}"
+																									class="form-control" id="userName1"
+																									name="student_fullname" placeholder="Full name">
+																							</div>
+																						</div>
+																						<div class="row mb-3">
+																							<label class="col-md-3 col-form-label"
+																								for="userName1">Email</label>
+																							<div class="col-md-9">
+																								<input type="email" th:field="*{email}"
+																									class="form-control" id="userName1"
+																									name="student_email"
+																									placeholder="email@gmail.com">
+																							</div>
+																						</div>
+
+																						<div class="row mb-3">
+																							<label class="col-md-3 col-form-label"
+																								for="password1">National ID</label>
+																							<div class="col-md-9">
+																								<input type="text" th:field="*{national_id}"
+																									id="password1" name="student_national_id"
+																									class="form-control"
+																									placeholder="National ID number">
+																							</div>
+																						</div>
+
+																						<div class="row mb-3">
+																							<label class="col-md-3 col-form-label"
+																								for="password1"> Phone Number</label>
+																							<div class="col-md-9">
+																								<input type="text" th:field="*{phone}"
+																									id="password1" name="student_phone"
+																									class="form-control" placeholder="07........">
+																							</div>
+																						</div>
+
+																						<div class="row mb-3">
+																							<label class="col-md-3 col-form-label"
+																								for="confirm1">Date of Birth</label>
+																							<div class="col-md-9">
+																								<input type="date" th:field="*{date_of_birth}"
+																									id="confirm1" name="student_date_of_birth"
+																									class="form-control" placeholder="dd/mm/yyyy">
+																							</div>
+																						</div>
+																						<div class="row mb-3">
+																							<label class="col-md-3 col-form-label"
+																								for="userName1">Gender</label>
+																							<div class="col-md-9">
+
+																								<select th:field="*{gender}"
+																									class="form-control" name="student_gender"
+																									id="userName1" placeholder="Gender">
+																									<option value="male">Male</option>
+																									<option value="female">Female</option>
+																								</select>
+																							</div>
+																						</div>
+																					</div>
+																					<!-- end col -->
+																				</div>
+																				<!-- end row -->
+
+																				<ul class="list-inline wizard mb-0">
+																					<li class="next list-inline-item float-end"><a
+																						href="javascript:void(0);" class="btn btn-info">Add
+																							More Info <i class="ri-arrow-right-line ms-1"></i>
+																					</a></li>
+																				</ul>
+																			</div>
+
+																			<div class="tab-pane" id="profile-tab-2">
+																				<div class="row">
+																					<div class="col-12">
+
+																						<div class="row mb-3">
+																							<label class="col-md-3 col-form-label"
+																								for="name1">Student ID</label>
+																							<div class="col-md-9">
+																								<input type="text" th:field="*{school_id}"
+																									id="name1" name="student_school_id"
+																									class="form-control"
+																									placeholder="Student's school id">
+																							</div>
+																						</div>
+																						<div class="row mb-3">
+																							<label class="col-md-3 col-form-label"
+																								for="surname1">Class/Year</label>
+																							<div class="col-md-9">
+																								<input type="text" th:field="*{year_of_study}"
+																									id="surname1" name="student_class"
+																									class="form-control" value="Brinkman">
+																							</div>
+																						</div>
+
+																						<div class="row mb-3">
+																							<label class="col-md-3 col-form-label"
+																								for="email1">Department</label>
+																							<div class="col-md-9">
+																								<select th:field="*{department}"
+																									class="form-control" name="student_department"
+																									id="userName1" placeholder="department">
+																									<option value="computing">ICT</option>
+																									<option value="medicine">Medicine</option>
+																									<option value="agriculture">Agriculture</option>
+																									<option value="sobe">SOBE</option>
+																									<option value="nursing">Nursing</option>
+																									<option value="law">Law</option>
+																								</select>
+																							</div>
+																						</div>
+																						<div class="row mb-3">
+																							<label class="col-md-3 col-form-label"
+																								for="email1">Course</label>
+																							<div class="col-md-9">
+																								<select th:field="*{course}"
+																									class="form-control" name="student_course"
+																									id="course" placeholder="department">
+																									<option value="computing">Software
+																										Engineering</option>
+																									<option value="medicine">Computer
+																										Science</option>
+																									<option value="agriculture">Nursing</option>
+																									<option value="sobe">Law</option>
+																									<option value="nursing">Education</option>
+																									<option value="law">Law</option>
+																								</select>
+																							</div>
+																						</div>
+																					</div>
+																					<!-- end col -->
+																				</div>
+																				<!-- end row -->
+																				<ul class="pager wizard mb-0 list-inline">
+																					<li class="previous list-inline-item">
+																						<button type="button" class="btn btn-light">
+																							<i class="ri-arrow-left-line me-1"></i> Back to
+																							Personal info page
+																						</button>
+																					</li>
+																					<li class="next list-inline-item float-end">
+																						<button type="button" class="btn btn-info">
+																							Add More Info <i class="ri-arrow-right-line ms-1"></i>
+																						</button>
+																					</li>
+																				</ul>
+																			</div>
+
+																			<div class="tab-pane" id="finish-2">
+																				<div class="row">
+																					<div class="col-12">
+																						<div class="text-center">
+																							<h2 class="mt-0">
+																								<i class="ri-check-double-line"></i>
+																							</h2>
+																							<h3 class="mt-0">Thank you !</h3>
+
+																							<p class="w-75 mb-2 mx-auto">You have reached
+																								the last page. Click the submit button below to
+																								send the data or go back to edit your details if
+																								need be</p>
+
+
+																						</div>
+																					</div>
+																					<!-- end col -->
+																				</div>
+																				<!-- end row -->
+																				<ul class="pager wizard mb-0 list-inline mt-1">
+																					<li class="previous list-inline-item">
+																						<button type="button" class="btn btn-light">
+																							<i class="ri-arrow-left-line me-1"></i> Back to
+																							Academic info Page
+																						</button>
+																					</li>
+																					<li class="next list-inline-item float-end">
+																						<button type="submit" class="btn btn-info">Submit</button>
+																					</li>
+																				</ul>
+																			</div>
+
+																		</div>
+																		<!-- tab-content -->
+																	</div>
+																	<!-- end #progressbarwizard-->
+																</form>
+
+															</div>
+															<!-- end card-body -->
+														</div>
+														<!-- end card-->
+													</div>
+												</div>
+
+											</div>
+											<!-- /.modal-content -->
+										</div>
+										<?php ?>
+										<!-- /.modal-dialog -->
+									</div>
+
+
+
+									<div class="card-tools">
+
+
+
+										
+									</div>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body table-responsive p-0">
+
+									<table
+										class="table table-hover table-sm text-nowrap table-head-fixed table-bordered">
+
+
+
+
+										<thead class="table-light">
+
+											
+											<th>Registration No</th>
+											<th>FullName</th>
+											<th>Email</th>
+											<th>School ID</th>
+											<th>Phone</th>
+											<th>Gender</th>
+											<th>Class</th>
+											<th>Department</th>
+											<th>Course</th>
+											<th colspan="2">Action</th>
+
+
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="student: ${studentPage}">
+												<td th:text="${student.student_regno}"></td>
+												<td th:text="${student.fullname}"></td>
+												<td th:text="${student.email}"></td>
+												<td th:text="${student.school_id}"></td>
+												<td th:text="${student.phone}"></td>
+												<td th:text="${student.gender}"></td>
+												
+												
+												
+												<td th:text="${student.year_of_study}"></td>
+												<td th:text="${student.department}"></td>
+												<td th:text="${student.course}"></td>
+												<td><a th:href="@{/edit-student/{id} (id = ${student.id})}" class="btn btn-warning" >
+														Edit</a></td>
+												<td><a  th:href="@{/delete-student/{id} (id = ${student.id})}"  class='btn btn-danger '>
+														Delete</a></td>
+											</tr>
+
+										</tbody>
+									</table>
+<!-- <div class="modal fade" id="delete-student" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form  method="post" th:action="@{/update-student}"
+									role="form" th:object="${student}">
+                <div class="modal-body text-center text-dark">
+                    <img src="../public/img/small-logo.png" height="80px"><br>
+                   
+                    <h4>Are you sure you want to delete the record?</h4>
+                    <input type="hidden" name="delete_book_id" id="delete-id">
+                    <button type="button" class="text-center btn btn-success" data-dismiss="modal">Cancel</button>
+                    <a th:href="@{/delete-student/{id} (id = ${student.id})}" class="text-center btn btn-danger">Delete</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+									<ul class="pagination">
+										<li class="page-item" th:if="${studentPage.hasPrevious()}">
+											<a class="page-link"
+											th:href="@{|/students?pageNo=${studentPage.getNumber() - 1}&pageSize=${studentPage.getSize()}&sortBy=${sortBy}|}">Previous</a>
+										</li>
+
+										<span
+											th:each="i : ${#numbers.sequence(0, studentPage.getTotalPages() - 1)}">
+											<li class="page-item" th:if="${i != studentPage.getNumber()}">
+												<a class="page-link"
+												th:href="@{|/students?pageNo=${i}&pageSize=${studentPage.getSize()}&sortBy=${sortBy}|}"
+												th:text="${i + 1}"></a>
+										</li>
+
+											<li class="page-item active" th:if="${i == studentPage.getNumber()}">
+												<a class="page-link "
+												th:href="@{|/students?pageNo=${i}&pageSize=${studentPage.getSize()}&sortBy=${sortBy}|}"
+												th:text="${i + 1}"></a>
+										</li>
+
+										</span>
+
+										<li class="page-item" th:if="${studentPage.hasNext()}"><a
+											class="page-link"
+											th:href="@{|/students?pageNo=${studentPage.getNumber() + 1}&pageSize=${studentPage.getSize()}&sortBy=${sortBy}|}">Next</a>
+										</li>
+									</ul>
+								</div>
+
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+
+
+		</div>
+
+
+
+		<!-- Main Footer -->
+		<footer class="main-footer"
+			style="background-color: #fff; margin: auto;">
+			<!-- To the right -->
+			<div class="float-right d-none d-sm-inline">©Library Management
+				System</div>
+			<!-- Default to the left -->
+			<div class="float-left">
+				<strong>Copyright &copy;2024 <a href="#">DigitalVortex</a>.
+				</strong> All rights reserved.
+			</div>
+		</footer>
+
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+		<script th:src="@{/js/ajax.js}"></script>
+		<!-- Bootstrap 4 -->
+
+		<script th:src="@{/js/pages/profile.initcopy.js}
+"></script>
+
+		<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+		<!-- AdminLTE App -->
+		<script th:src="@{/js/adminlte.min.js}"></script>
+		<!-- SweetAlert2 -->
+		<script th:src="@{/plugins/sweetalert2/sweetalert2.min.js}"></script>
+		<!-- Moment Js -->
+		<script th:src="@{/plugins/moment/moment.min.js}"></script>
+		<!-- Toastr -->
+		<script th:src="@{/plugins/toastr/toastr.min.js}"></script>
+		<!-- Select2 -->
+		<script th:src="@{/plugins/select2/js/select2.full.min.js}"></script>
+		<!-- date-range-picker -->
+		<script th:src="@{/plugins/daterangepicker/daterangepicker.js}"></script>
+
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js" integrity="sha384-YwCdhNQ2IwiYajqT/nGCj0FiU5SR4oIkzYP3ffzNWtu39GKBddP0M0waDU7Zwco0" crossorigin="anonymous"></script> -->
+		<!-- DataTables  & Plugins -->
+		<script th:src="@{/plugins/datatables/jquery.dataTables.min.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+		<script th:src="@{/plugins/jszip/jszip.min.js}"></script>
+		<script th:src="@{/plugins/pdfmake/pdfmake.min.js}"></script>
+		<script th:src="@{/plugins/pdfmake/vfs_fonts.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+		<script
+			th:src="@{/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+		<!-- ChartJS -->
+		<script th:src="@{/plugins/chart.js/Chart.min.js}"></script>
+		<!-- Custom JS -->
+		<script th:src="@{/js/custom.js}"></script>
+
+
+		<!-- Select  -->
+		<script th:src="@{/js/bootstrap.wizard.min.js}"></script>
+		<script th:src="@{/js/pages/form-wizard.init copy.js}"></script>
+
+
+<script>
+var myDiv = document.getElementById('myDiv');
+
+setTimeout(function(){
+			myDiv.style.display = 'none';
+		},4000);
+</script>
+
+	</div>
+
+
+
+</body>
+
+</html>
