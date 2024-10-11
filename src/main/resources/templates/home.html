@@ -162,7 +162,7 @@
 								<!-- /.card-header -->
 								<div class="card-body table-responsive p-0">
 
-									<table id="example1"
+									<table id="example2"
 										class="table table-hover text-nowrap table-head-fixed table-bordered table-sm">
 										<thead>
 											<tr>
@@ -214,7 +214,7 @@
 								<!-- /.card-header -->
 								<div class="card-body table-responsive p-0">
 
-									<table id="example2"
+									<table id="example1"
 										class="table table-hover text-nowrap table-head-fixed table-bordered table-sm">
 										<thead>
 											<tr>
@@ -261,7 +261,19 @@
 
 		</div>
 
-
+		<script>
+			$(function() {
+                $("#example1").DataTable();
+                $('#example2').DataTable({
+                    "paging" : true,
+                    "lengthChange" : true,
+                    "searching" : true,
+                    "ordering" : true,
+                    "info" : true,
+                    "autoWidth" : true,
+                });
+            });
+		</script>
 	</section>
 
 </body>
