@@ -24,7 +24,7 @@ public class BookServiceImpl implements BookService{
 
 	@Override
 	public Books saveBook(BookDTO bookDTO) {
-		
+		bookDTO.setStatus("available");
 		Books books = new Books(bookDTO.getTitle(),bookDTO.getAuthors(),bookDTO.getIsbn(),bookDTO.getPublisher(),bookDTO.getPublication_date(),bookDTO.getEdition(),bookDTO.getLanguage(),bookDTO.getCategory(),bookDTO.getQuantity(),bookDTO.getStatus(),bookDTO.getIssueBook());
 		
 		return bookRepository.save(books);

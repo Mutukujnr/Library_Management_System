@@ -2,6 +2,8 @@ package com.amos.lms.controllers;
 
 import java.security.Principal;
 
+import com.amos.lms.service.StudentsPdfGenerator;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,10 +27,12 @@ public class StudentController {
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
-	
+
+	@Autowired
+	StudentService studentService;
 	
 	@Autowired
-	private StudentService studentService;
+	private StudentsPdfGenerator pdfGenerator;
 
 	@GetMapping("/students")
 	public  String studentsPage(
@@ -111,6 +115,23 @@ public class StudentController {
 		
 		return "redirect:/students";
 		
+	}
+
+	@GetMapping("/downloadStudentsReport")
+	public String studentsDownload(HttpSession session) {
+
+		//ApplicationContext ac = SpringApplication.run(LibraryManagementSystemApplication .class, args);
+
+		//PdfGenerator pdf = ac.getBean("pdfGenerator",PdfGenerator.class);
+
+		boolean generatePdfReport = pdfGenerator.generatePdfReport();
+
+		if (generatePdfReport){
+			session.setAttribute("succMsg","Report successfully downloaded. Locate it in Your Desktop Folder");
+		}else {
+			session.setAttribute("errMsg","Error! Report not downloaded");
+		}
+		return "redirect:/students";
 	}
 	
 }

@@ -175,7 +175,7 @@
                         <p>Return Book</p>
                     </a></li>
                     <li class="nav-item has-treeview"><a
-                            href="../views/all-records.php" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+                            th:href="@{/downloadIssuedBooksReport}" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
                         <i class="nav-icon"> <img
                                 th:src="@{/Images/icons8_View_Details_26px.png}" alt=""
                                 srcset="">
@@ -183,19 +183,49 @@
                         <p>view Records</p>
                     </a></li>
                     <li class="nav-item has-treeview"><a
-                            href="../views/issued-books.php" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
+                            th:href="@{/issued-books}" class="nav-link"> <!-- <i class="far fa-user-graduate"></i> -->
                         <i class="nav-icon"> <img
                                 th:src="@{/Images/icons8_Books_26px.png}" alt="" srcset="">
                         </i>
                         <p>View Issued Books</p>
                     </a></li>
                     <li class="nav-item has-treeview"><a
-                            href="../views/defaulters.php" class="nav-link"> <i
+                            th:href="@{/defaulters}" class="nav-link"> <i
                             class="nav-icon"> <img
                             th:src="@{/Images/icons8_Conference_26px.png}" alt="" srcset="">
                     </i>
                         <p>Defaulter List</p>
                     </a></li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Reports
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a th:href="@{/downloadBooksReport}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Books Report</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a  th:href="@{/downloadStudentsReport}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Students Report</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a th:href="@{/downloadIssuedBooksReport}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Issued Books Report</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                 </ul>
             </nav>

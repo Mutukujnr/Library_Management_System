@@ -31,8 +31,8 @@ public class SecurityConfiguration {
         http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(requests -> requests
                 .requestMatchers("/register").permitAll()       
                 .requestMatchers("/CSS/**","/Images/**","/js/**","/plugins/**","/fonts/**","/auth/**").permitAll()
-                .requestMatchers("/home","/students","/add-student","/edit-student/{id}","/delete-student/{id}","/update-student").permitAll()
-                .requestMatchers("/books","/add-book","/editBook/{id}","/deleteBook/{id}","/updateBook","/issueBookForm","/issueBook","/issuedBooks","/return","/issued-books").permitAll())
+                .requestMatchers("/home","/students","/add-student","/edit-student/{id}","/delete-student/{id}","/update-student","/downloadStudentsReport").permitAll()
+                .requestMatchers("/books","/add-book","/editBook/{id}","/deleteBook/{id}","/updateBook","/issueBookForm","/issueBook","/issuedBooks","/return","/issued-books","/downloadBooksReport","/downloadIssuedBooksReport").permitAll())
                 .formLogin(login -> login
                         .loginPage("/login")
                         .loginProcessingUrl("/login")

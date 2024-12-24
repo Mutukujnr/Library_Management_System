@@ -38,7 +38,24 @@
 			<section class="content">
 				<div class="container-fluid">
 					<!-- Small boxes (Stat box) -->
+					<div th:if="${session.succMsg}" class="bg-info shadow-sm" >
 
+						<p class="fade-in-element text-center fw-bold"style="color:white;padding:10px;width:50%;margin:auto">[[${session.succMsg}]]</p>
+
+						<div
+								th:text="${@commonServiceImpl.removeSessionStorage()}">
+
+						</div>
+					</div>
+					<div th:if="${session.errorMsg}" class="bg-info shadow-sm">
+
+						<p class="fade-in-element text-center text-danger fw-bold"style="color:red;padding:10px;width:50%;margin:auto">[[${session.errorMsg}]]</p>
+
+						<div
+								th:text="${@commonServiceImpl.removeSessionStorage()}">
+
+						</div>
+					</div>
 
 					<h5 class="text-primary"
 						style="margin-bottom: -45px; text-align: center">Issued Books</h5>

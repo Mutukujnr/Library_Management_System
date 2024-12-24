@@ -3,6 +3,8 @@ package com.amos.lms.controllers;
 import java.security.Principal;
 import java.util.List;
 
+import com.amos.lms.service.*;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,10 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.amos.lms.dto.IssueBookDTO;
-import com.amos.lms.service.BookService;
-import com.amos.lms.service.IssuedBooksService;
-import com.amos.lms.service.ReturnBookService;
-import com.amos.lms.service.StudentService;
 
 @Controller
 public class IssuedBooksController {
@@ -30,6 +28,9 @@ public class IssuedBooksController {
 	
 	@Autowired
 	ReturnBookService returnBookService;
+
+    @Autowired
+    IssuedBooksPdfGenerator pdfGenerator;
 
 	@Autowired
 	private StudentService studentService;
@@ -68,4 +69,21 @@ public class IssuedBooksController {
 		returnBookService.returnBook(student_id, book_id);
 		return "redirect:/issuedBooks?success";
 	}
+
+    @GetMapping("/downloadIssuedBooksReport")
+    public String issuedBooksDownload(HttpSession session) {
+
+        //ApplicationContext ac = SpringApplication.run(LibraryManagementSystemApplication .class, args);
+
+        //PdfGenerator pdf = ac.getBean("pdfGenerator",PdfGenerator.class);
+
+        boolean generatePdfReport = pdfGenerator.generatePdfReport();
+
+        if (generatePdfReport){
+            session.setAttribute("succMsg","Report successfully downloaded. Locate it in Your Desktop Folder");
+        }else {
+            session.setAttribute("errMsg","Error! Report not downloaded");
+        }
+        return "redirect:/issued-books";
+    }
 }

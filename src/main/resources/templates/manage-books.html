@@ -44,6 +44,30 @@
 				<div th:if="${param.success}" id="myDiv" class="bg-success fade-in-element" style="color:white;padding:10px;width:50%;margin:auto">
 					<p>book updated successfully</p>
 				</div>
+
+
+
+					<div th:if="${session.succMsg}" class="bg-info shadow-sm" >
+
+						<p class="fade-in-element text-center fw-bold"style="color:white;padding:10px;width:50%;margin:auto">[[${session.succMsg}]]</p>
+
+							<div
+								th:text="${@commonServiceImpl.removeSessionStorage()}">
+
+						</div>
+					</div>
+					<div th:if="${session.errorMsg}" class="bg-info shadow-sm">
+
+						<p class="fade-in-element text-center text-danger fw-bold"style="color:red;padding:10px;width:50%;margin:auto">[[${session.errorMsg}]]</p>
+
+							<div
+								th:text="${@commonServiceImpl.removeSessionStorage()}">
+
+						</div>
+					</div>
+
+
+
 					<h5 class="text-primary"
 						style="margin-bottom: -45px; text-align: center">Manage Books</h5>
 					<div class="row " style="margin-top: 50px;border-top:4px solid aqua">
@@ -266,28 +290,28 @@
 
 
 
-										<thead class="thead -light">
+										<thead class="thead-light">
 											<tr>
 												
 												<th>Book Title</th>
-												<th>Authors</th>
+
 												<th>ISBN</th>
-												<th>Publisher</th>
+
 												<th>Publication Date</th>
 												<th>Edition</th>
 												<th>Language</th>
 												<th>Category</th>
 												<th>Quantity</th>
-												<th>Stock</th>
+
 												<th colspan="2">Action</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr th:each="book: ${bookPage}">
 												<td th:text="${book.title}"></td>
-												<td th:text="${book.authors}"></td>
+
 												<td th:text="${book.isbn}"></td>
-												<td th:text="${book.publisher}"></td>
+
 												<td th:text="${book.publication_date}"></td>
 												<td th:text="${book.edition}"></td>
 												<td th:text="${book.language}"></td>

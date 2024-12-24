@@ -2,6 +2,8 @@ package com.amos.lms.controllers;
 
 import java.security.Principal;
 
+import com.amos.lms.service.PdfGenerator;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,6 +29,9 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
+
+	@Autowired
+	private PdfGenerator pdfGenerator;
 
 	@GetMapping("/books")
 	public String allBooks(@RequestParam(defaultValue = "0") int pageNo, @RequestParam(defaultValue = "5") int pageSize,
@@ -94,6 +99,23 @@ public class BookController {
 	public String deletetBook(@PathVariable(value = "id") Long id) {
 
 		bookService.deleteBookById(id);
+		return "redirect:/books";
+	}
+
+	@GetMapping("/downloadBooksReport")
+	public String bookDownload(HttpSession session) {
+
+		//ApplicationContext ac = SpringApplication.run(LibraryManagementSystemApplication .class, args);
+
+		//PdfGenerator pdf = ac.getBean("pdfGenerator",PdfGenerator.class);
+
+		boolean generatePdfReport = pdfGenerator.generatePdfReport();
+
+		if (generatePdfReport){
+			session.setAttribute("succMsg","Report successfully downloaded. Locate it in Your Desktop Folder");
+		}else {
+			session.setAttribute("errMsg","Error! Report not downloaded");
+		}
 		return "redirect:/books";
 	}
 
