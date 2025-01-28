@@ -8,13 +8,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class CustomUserDetails implements UserDetails{
 
 	
-	private String username;
+	private final String username;
 	
-	private String password;
+	private final String password;
 	
-	private Collection<? extends GrantedAuthority> authorities;
+	private final Collection<? extends GrantedAuthority> authorities;
 	
-	private String fullname;
+	private final String fullname;
 	
 	
 	

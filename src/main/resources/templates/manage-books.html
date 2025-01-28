@@ -6,6 +6,7 @@
 <!-- Mirrored from themes.getappui.com/techzaa/velonic/layouts/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 11:14:42 GMT --><head>
 	<meta charset="UTF-8">
 	<title>Manage Books</title>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 	<section class="wrapper">
@@ -38,16 +39,31 @@
 			<section class="content">
 				<div class="container-fluid" >
 					<!-- Small boxes (Stat box) -->
-<div th:if="${param.success}" id="myDiv" class="bg-success fade-in-element" style="color:white;padding:10px;width:50%;margin:auto">
-					<p>book added successfully</p>
+<!--<div th:if="${param.success}" id="myDiv" class="bg-success fade-in-element" style="color:white;padding:10px;width:50%;margin:auto">
+	<script>
+		swal.fire({
+        icon: 'success',
+
+        text: 'Book addedd successfully',
+        confirmButtonText: 'OK'
+        });
+	</script>-->
 				</div>
 				<div th:if="${param.success}" id="myDiv" class="bg-success fade-in-element" style="color:white;padding:10px;width:50%;margin:auto">
-					<p>book updated successfully</p>
+					<script>
+						swal.fire({
+                        icon: 'success',
+
+                        text: 'Book added successfully',
+                        confirmButtonText: 'OK'
+                        });
+					</script>
 				</div>
 
 
 
-					<div th:if="${session.succMsg}" class="bg-info shadow-sm" >
+
+					<!--<div th:if="${session.succMsg}" class="bg-info shadow-sm" >
 
 						<p class="fade-in-element text-center fw-bold"style="color:white;padding:10px;width:50%;margin:auto">[[${session.succMsg}]]</p>
 
@@ -64,7 +80,7 @@
 								th:text="${@commonServiceImpl.removeSessionStorage()}">
 
 						</div>
-					</div>
+					</div>-->
 
 
 

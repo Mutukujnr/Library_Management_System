@@ -28,9 +28,9 @@ public class Users {
 	private Long contact;
 	
 	
-	public Users() {};
+	public Users() {}
 
-	public Users(String fullname,String username, String password, Long contact) {
+    public Users(String fullname,String username, String password, Long contact) {
 		super();
 		
 		this.fullname = fullname;

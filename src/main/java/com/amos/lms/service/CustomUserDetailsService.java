@@ -2,6 +2,7 @@ package com.amos.lms.service;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -32,7 +33,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	}
 	
 	public Collection<? extends GrantedAuthority> authorities(){
-		return Arrays.asList(new SimpleGrantedAuthority("USER"));
+		return List.of(new SimpleGrantedAuthority("USER"));
 	}
 
 }

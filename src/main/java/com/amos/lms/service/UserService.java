@@ -5,7 +5,7 @@ import com.amos.lms.entities.Users;
 
 public interface UserService {
 	
-	public Users findByUsername(String username);
+	Users findByUsername(String username);
 	
 	Users save(UserDTO userDTO);
 

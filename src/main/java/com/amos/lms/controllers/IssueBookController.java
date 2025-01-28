@@ -1,6 +1,7 @@
 package com.amos.lms.controllers;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -46,8 +47,12 @@ public class IssueBookController {
 
     @PostMapping("/issueBook")
     public String issueBook(@RequestParam Long studentId, @RequestParam Long bookId, @ModelAttribute("issuedBook") IssueBook issueBook, Model model) {
+
         IssueBook message = issueBookService.issueBook(studentId, bookId);
+
+
         model.addAttribute("message", message);
-        return "redirect:/issueBookForm?success";
+        model.addAttribute("success", "Book issued successfully");
+        return "redirect:/issueBookForm";
     }
 }

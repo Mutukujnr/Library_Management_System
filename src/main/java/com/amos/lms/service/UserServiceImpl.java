@@ -12,7 +12,7 @@ import com.amos.lms.repositories.UserRepository;
 public class UserServiceImpl implements UserService{
 
 	
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 	
 	
 	

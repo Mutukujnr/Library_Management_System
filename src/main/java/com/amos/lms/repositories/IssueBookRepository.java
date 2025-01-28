@@ -41,7 +41,9 @@ public interface IssueBookRepository extends JpaRepository<IssueBook,Long>{
 	 @Transactional
 	 @Query("DELETE FROM IssueBook ib where ib.student.student_id = :student_id AND ib.book.book_id = :book_id")
 		void deleteBookByIdAndStudentId(@Param("student_id") Long student_id, @Param("book_id") Long book_id);
-	 
-	 
+
+	//List<IssueBook> findByStudent_Student_id(Long student_id);
+
+
 //	 Optional<IssueBook> findByStudentRegnoAndIsbn(String student_regno, String isbn);
 }

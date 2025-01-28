@@ -14,11 +14,20 @@
 			<!-- Content Header (Page header) -->
 
 			<!-- /.content-header -->
-			<div th:if="${param.success}" id="myDiv"
-				class="bg-success fade-in-element"
-				style="color: white; padding: 10px; width: 50%; margin: auto">
-				<p>book issued successfully</p>
+			<div th:if="${success}">
+				<script>
+					swal.fire({
+                    icon: 'success',
+
+                    text: '[[${success}}]]',
+                    confirmButtonText: 'OK'
+                    });
+				</script>
 			</div>
+			<script>
+				let status = "[[${success}]]";
+				console.log(status);
+			</script>
 			<!-- Main content -->
 			<section class="content">
 
